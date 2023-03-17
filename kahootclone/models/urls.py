@@ -3,4 +3,6 @@ from . import views
 
 # Here we will add all urls relevant to the models app
 
-urlpatterns = []
+urlpatterns = [
+    path('', views.HomePage.as_view(), name='home'),
+]

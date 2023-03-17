@@ -24,5 +24,10 @@ TO-DO, no olvidar:
     -user: from django.contrib.auth.models import AbstractUser y copiamos la class User del enunciado
     -creamos en models/urls.py para hacer la redireccion desde kahootclone/urls.py
     -añadimos en settings.py AUTH_USER_MODE='models.User'
+  HOME PAGE:
+    - creamos la view y los templates para la pagina principal
+    - realizamos los cambios apropiados en settings (literalmente me cago en mi puta madre)
+    - al abrir la url, efectivamente, se ve la pagina principal
+    - lo siguiente seria implementar login, logout, cositas de admin (los templates)
 
 
