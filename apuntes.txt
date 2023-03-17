@@ -1,0 +1,28 @@
+LO SIGUIENTE:
+-2.2 signup
+
+TO-DO, no olvidar:
+-crear una db en neon y modificar settings para usar esta bd
+-makefile hacerlo bien
+-preguntar a skye flake8
+
+17/03
+  ENTORNO VIRTUAL:
+    -virtualenv p3_env --python=python3.9
+    -source p3_env/bin/activate
+    -pip3 install -r requirements.txt
+    -pip freeze (para comprobar que se instaló)
+  PREPARACIÓN FICHEROS:
+    -creado makefile (copiado del enunciado)
+    -copiamos el skeleton con el tutorial de django (startproject...)
+    -creamos carpeta static fuera de la app (bellogin ha dicho que se comparte para las dos apps)
+  DATABASE:
+    -createdb -U alumnodb -h localhost psi-kahoot
+    -linkeamos en settings la bd psi-kahoot
+  2.2 USERS:
+    -login y logout: copiamos en kahootclone/urls.py para admin y accounts de la p1
+    -user: from django.contrib.auth.models import AbstractUser y copiamos la class User del enunciado
+    -creamos en models/urls.py para hacer la redireccion desde kahootclone/urls.py
+    -añadimos en settings.py AUTH_USER_MODE='models.User'
+
+
