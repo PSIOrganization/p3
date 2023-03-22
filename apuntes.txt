@@ -1,6 +1,13 @@
 LO SIGUIENTE:
 -2.2 signup
 
+PARA PROBAR: python3
+manage.py makemigrations
+manage.py migrate
+export TESTING=1
+manage.py runserver
+
+
 TO-DO, no olvidar:
 -crear una db en neon y modificar settings para usar esta bd
 -makefile hacerlo bien
@@ -29,5 +36,10 @@ TO-DO, no olvidar:
     - realizamos los cambios apropiados en settings (literalmente me cago en mi puta madre)
     - al abrir la url, efectivamente, se ve la pagina principal
     - lo siguiente seria implementar login, logout, cositas de admin (los templates)
+22/03
+  TEMPLATES:  
+    -copiamos las templates de registration de la práctica1
+  SETTINGS.PY:
+    -añadimos LOGIN_REDIRECT_URL= '/'  
 
 

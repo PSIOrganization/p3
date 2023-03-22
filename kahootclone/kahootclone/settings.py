@@ -120,7 +120,7 @@ USE_TZ = True
 
 
 AUTH_USER_MODEL = 'models.User' # This is the new default user model
-
+LOGIN_REDIRECT_URL= '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
