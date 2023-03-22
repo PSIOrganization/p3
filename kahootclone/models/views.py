@@ -29,13 +29,19 @@ class HomePage(View):
 
 class SignUp(View):
 
+    http_method_names = ['get', 'post', 'head']
+
+    def get(self, request):
+        template = loader.get_template('signup.html')
+        return HttpResponse(template.render(None, request)) 
+
     def signup(request):
         if request.method == 'POST':
             form = UserCreationForm(request.POST)
             if form.is_valid():
                 form.save()
                 username = form.cleaned_data.get('username')
-                raw_password = form.cleaned_data.get('password1')
+                raw_password = form.cleaned_data.get('password')
                 user = authenticate(username=username, password=raw_password)
                 login(request, user)
                 return redirect('home')
