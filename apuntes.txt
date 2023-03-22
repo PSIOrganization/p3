@@ -1,5 +1,5 @@
 LO SIGUIENTE:
--2.2 signup
+-2.2 signup (seguir con tutorial)
 
 PARA PROBAR: python3
 manage.py makemigrations
