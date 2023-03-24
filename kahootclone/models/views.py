@@ -14,10 +14,12 @@ from django.views.generic import View, ListView, DetailView
 
 from django.template import loader
 
+from .models import User
 
 
 # Create your views here.
 # The views (views.py) must be implemented using classes.
+
 
 class HomePage(View):
     """Home page of the application"""
@@ -25,29 +27,38 @@ class HomePage(View):
     def get(self, request):
         template = loader.get_template('home.html')
         return HttpResponse(template.render(None, request)) 
-        # first variable is the variable dictionary to pass to the template
+        # first variable 
+        # is the variable dictionary to pass to the template
+
+
+class MyUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = UserCreationForm.Meta.fields
+
 
 class SignUp(View):
 
     http_method_names = ['get', 'post', 'head']
 
-    def get(self, request):
-        template = loader.get_template('signup.html')
-        return HttpResponse(template.render(None, request)) 
+    # def get(self, request):
+    #     template = loader.get_template('signup.html')
+    #     return HttpResponse(template.render(None, request)) 
 
-    def signup(request):
-        if request.method == 'POST':
-            form = UserCreationForm(request.POST)
-            if form.is_valid():
-                form.save()
-                username = form.cleaned_data.get('username')
-                raw_password = form.cleaned_data.get('password')
-                user = authenticate(username=username, password=raw_password)
-                login(request, user)
-                return redirect('home')
-            else:
-                pass # validation form???????
-        else:
-            form = UserCreationForm()
+    def get(self, request):
+        form = MyUserCreationForm()
         return render(request, 'signup.html', {'form': form})
     
+    def post(self, request):
+        form = MyUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            #username = form.cleaned_data.get('username')
+            #raw_password = form.cleaned_data.get('password')
+            #user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
+        else:
+            return redirect('home')
+        
+        

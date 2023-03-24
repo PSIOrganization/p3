@@ -43,3 +43,5 @@ TO-DO, no olvidar:
     -añadimos LOGIN_REDIRECT_URL= '/'  
 
 
+*quitar unnecessary folders *.pyc, pycache, .vscode, node_modules
+*num of collaborations: git log | grep "Author:" |sort|uniq-c
