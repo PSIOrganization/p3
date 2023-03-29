@@ -7,6 +7,9 @@ manage.py migrate
 export TESTING=1
 manage.py runserver
 
+TESTS:
+python3 manage.py test models.test_name --verbosity 2
+
 
 TO-DO, no olvidar:
 -crear una db en neon y modificar settings para usar esta bd
