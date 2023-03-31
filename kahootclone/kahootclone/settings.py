@@ -112,6 +112,8 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/London'
 
+DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+
 USE_I18N = True
 
 USE_L10N = True
@@ -119,8 +121,9 @@ USE_L10N = True
 USE_TZ = True
 
 
-AUTH_USER_MODEL = 'models.User' # This is the new default user model
-LOGIN_REDIRECT_URL= '/'
+AUTH_USER_MODEL = 'models.User'  # This is the new default user model
+
+LOGIN_REDIRECT_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -138,7 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # To see the current value just type echo $TESTING
 
 if 'TESTING' in os.environ:
-    db_from_env = dj_database_url.config(default='postgres://alumnodb:alumnodb@localhost:5432/psi-kahoot', conn_max_age=500)
+    db_from_env = dj_database_url.config(default='postgres://alumnodb:alumnodb@localhost:5432/psi', conn_max_age=500)
 else:
     # Use when deploy in render.com
     # db_from_env = dj_database_url.config(default='postgres://manuloseta:YqE8iSA3gldb@ep-falling-king-350755.eu-central-1.aws.neon.tech/neondb', conn_max_age=500)

@@ -48,3 +48,26 @@ TO-DO, no olvidar:
 
 *quitar unnecessary folders *.pyc, pycache, .vscode, node_modules
 *num of collaborations: git log | grep "Author:" |sort|uniq-c
+
+31/03:
+  cada vez que el usuario responda, los puntos deben actualizarse
+    recomiendan actualizar el método save
+
+  models es data y views es funcionalidad
+
+  services/models.py may be empty
+
+  hacer loginrequiredmixin ya que la mayoria de las funcionalidades
+  solo se podran hacer si esta el usuario logged in
+
+  tener en cuenta las views que nos da django y decidir
+    DetailViewdeleteview
+    ListViewupdateview
+    createview...
+    todas las views deben ser class based
+
+  -hacemos modelos:
+
+    .question: on delete.cascade??
+    .Django creates automatically a primary key called id for every model, so you
+    should not create it explicitly??
