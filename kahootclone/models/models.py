@@ -9,7 +9,8 @@ class User(AbstractUser):
     '''Default user class, just in case we want
     to add something extra in the future'''
     #  remove pass command if you add something here
-    pass
+    def __str__(self):
+        return str(self.username) + ", " + str(self.password)
 
 
 class Questionnaire(models.Model):
@@ -17,9 +18,12 @@ class Questionnaire(models.Model):
     # questionnaire_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     created_at = models.DateTimeField('creation', auto_now_add=True)
-    updated_at = models.DateTimeField('last-update', auto_now=True)  # default??
+    updated_at = models.DateTimeField('last-update', auto_now=True)  # default?
     # on_delete?????
     user = models.ForeignKey('User', on_delete=models.CASCADE)
+
+    def getUser(self):
+        return self.user
     
     def __str__(self):
         return str(self.title)
@@ -50,6 +54,9 @@ class Answer(models.Model):
 
     def __str__(self):
         return str(self.answer)
+    
+    def set_correct(self, bool):
+        self.correct = bool
    
 
 class Game(models.Model):
@@ -64,15 +71,14 @@ class Game(models.Model):
         ANSWER = 3
         LEADERBOARD = 4
 
-    state = models.IntegerField(choices=State.choices)
+    state = models.IntegerField(choices=State.choices, default=State.WAITING)
     publicId = models.IntegerField(unique=True)
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # an override
         self.publicId = random.randint(1, 1e6)
-        super(Game, self).save(*args, **kwargs)
-    
-    countdownTime = models.IntegerField()
-    questionNo = models.IntegerField()
+        super(Game, self).save(*args, **kwargs) 
+    countdownTime = models.IntegerField(null=True, blank=True)
+    questionNo = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         ret = str(self.questionnaire) + ', ' + str(self.publicId)
