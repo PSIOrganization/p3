@@ -23,10 +23,12 @@ from models.models import Answer as Answer
 from models.models import Game as Game
 
 from faker import Faker
+from django.contrib.auth.hashers import make_password
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'kahootclone.settings')
 django.setup()
 
+# ya estaba en init tonto
 N_QUESTIONNAIRES = 2
 N_QUESTIONS = 6
 N_ANSWERS = 20
@@ -106,12 +108,12 @@ class Command(BaseCommand):
         usernames = self.faker.words(2)
         password1, password2 = self.faker.password(), self.faker.password()
 
-        user1 = User(username=usernames[0], password=password1)
-        user2 = User(username=usernames[1], password=password2)
+        user1 = User(username=usernames[0], password=make_password(password1))
+        user2 = User(username=usernames[1], password=make_password(password2))
         user1.save()
         user2.save()
-        print(" -> " + str(user1))
-        print(" -> " + str(user2))
+        print(" -> " + usernames[0] + ", with password " + password1)
+        print(" -> " + usernames[1] + ", with password " + password2)
 
     def questionnaire(self):
         "insert questionnaires"
@@ -126,7 +128,7 @@ class Command(BaseCommand):
                                           user=random_user)
             questionnaire.save()
             print(" -> " + str(questionnaire) + ", assigned to: " +
-                  str(questionnaire.getUser()))
+                  str(questionnaire.getUser().get_username()))
 
     def question(self):
         " insert questions, assign randomly to questionnaires"

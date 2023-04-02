@@ -53,8 +53,9 @@ class SignUp(View):
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            #no hace falta hacer authenticate ya que ya obtenemos el user al guardar el form
+            # no hace falta hacer authenticate ya que ya obtenemos el user al guardar el form
             login(request, user)
+            print(user)
             return redirect('home')
         else:
             return redirect('home')

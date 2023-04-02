@@ -9,6 +9,10 @@ class User(AbstractUser):
     '''Default user class, just in case we want
     to add something extra in the future'''
     #  remove pass command if you add something here
+
+    def get_username(self):
+        return self.username
+
     def __str__(self):
         return str(self.username) + ", " + str(self.password)
 
@@ -24,10 +28,10 @@ class Questionnaire(models.Model):
 
     def getUser(self):
         return self.user
-    
+  
     def __str__(self):
         return str(self.title)
-        
+     
 
 class Question(models.Model):
     '''Question class'''
