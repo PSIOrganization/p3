@@ -34,6 +34,8 @@ N_GAMES = 2
 
 # The name of this class is not optional must be Command
 # otherwise manage.py will not process it properly
+
+
 class Command(BaseCommand):
     # helps and arguments shown when command python manage.py help populate
     # is executed.
@@ -128,7 +130,7 @@ class Command(BaseCommand):
 
     def question(self):
         " insert questions, assign randomly to questionnaires"
-        print("Questions") 
+        print("Questions")
         items = list(Questionnaire.objects.all())
         for _ in range(N_QUESTIONS):
             q = self.faker.text(20)
@@ -160,7 +162,7 @@ class Command(BaseCommand):
             if n_answers == 4:
                 print("[question removed]")
                 items.remove(random_question)
-        
+
     def assign_correct_answer(self):
         print("Correct answer for each question")
         items = list(Question.objects.all())
@@ -185,6 +187,5 @@ class Command(BaseCommand):
             random_q = random.choice(items)
             game = Game(questionnaire=random_q)
             game.save()
-            print(" -> Questionnaire \"" + str(random_q) + "\" assigned to game \"" +
-                  str(game) + "\"")
-
+            print(" -> Questionnaire \"" + str(random_q) +
+                  "\" assigned to game \"" + str(game) + "\"")
