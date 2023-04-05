@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 import random
+
+from django.urls import reverse, reverse_lazy
 # Create your models here.
 
 
@@ -26,12 +28,18 @@ class Questionnaire(models.Model):
     # on_delete?????
     user = models.ForeignKey('User', on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-updated_at']
+
     def getUser(self):
         return self.user
-  
+
+    def get_absolute_url(self):
+        return reverse('questionnaire-detail', args=[str(self.id)])
+
     def __str__(self):
         return str(self.title)
-     
+
 
 class Question(models.Model):
     '''Question class'''
@@ -46,6 +54,7 @@ class Question(models.Model):
 
     def __str__(self):
         return str(self.question)
+    
 
 
 class Answer(models.Model):

@@ -21,16 +21,6 @@ from .models import User
 # The views (views.py) must be implemented using classes.
 
 
-class HomePage(View):
-    """Home page of the application"""
-
-    def get(self, request):
-        template = loader.get_template('home.html')
-        return HttpResponse(template.render(None, request)) 
-        # first variable 
-        # is the variable dictionary to pass to the template
-
-
 class MyUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
@@ -48,7 +38,7 @@ class SignUp(View):
     def get(self, request):
         form = MyUserCreationForm()
         return render(request, 'signup.html', {'form': form})
-    
+
     def post(self, request):
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
@@ -59,5 +49,3 @@ class SignUp(View):
             return redirect('home')
         else:
             return redirect('home')
-        
-        

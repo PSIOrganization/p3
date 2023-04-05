@@ -4,6 +4,5 @@ from . import views
 # Here we will add all urls relevant to the models app
 
 urlpatterns = [
-    path('', views.HomePage.as_view(), name='home'),
-    path('signup', views.SignUp.as_view(), name='signup'),
+     path('signup', views.SignUp.as_view(), name='signup'),
 ]

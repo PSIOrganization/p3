@@ -8,15 +8,29 @@
 <!-- Search here ?? -->
 {% if user.is_authenticated %}
     Hi {{ user.username }}!
+    <ul>
+        <li><strong>Last five questionnaires:</strong></li>
+        {% for questionnaire in last_questionnaires %}
+            <li><a href="{% url 'questionnaire-detail' questionnaire.id %}">{{ questionnaire.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'questionnaire-create' %}">New Questionnaire</a></p>
+    <p><a href="{% url 'questionnaire-list' %}">All Questionnaires</a></p>
     <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
     <p>You are not logged in</p>
     <a href="{% url 'login' %}">Log In</a>
+    <a href="{% url 'signup' %}">Sign Up</a>
     <!-- We need to program signup here -->
 {% endif %}
 {% endblock content %}
 
-<!-- Ejemplo de fichero home.html. 
-Esto es solo un ejemplo para empezar a trabajar, 
-se espera que lo modifiquéis tanto como sea necesario. 
+<!-- 
+    If the user is not connected, in the template the
+login and signup options will be shown (Fig. 1). If the user is connected,
+besides the listing with the 5 returned questionnaires, the following options
+will be oered: log-out, create a new questionnaire, and show all the user
+questionnaires (Fig. 2). In the same way, it should be possible to select one of
+the questionnaires and access a page where they are shown in detail.
+
 -->

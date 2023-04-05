@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Questionnaire: {{ questionnaire.title }}</h1>
+
+  <div style="margin-left:20px;margin-top:20px"> 
+    <h4>Questions</h4>
+    
+    <ul>
+    {% for question in question_list %}
+      <li>
+        <a href="{% url 'question-detail' question.id %}">{{question}}</a>
+        <a href="{% url 'question-update' question.id %}">Edit</a>
+        <a href="{% url 'question-remove' question.id %}">Remove</a>
+      </li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'question-create' questionnaire.id %}">Add Question</a>
+    
+    </div>
+{% endblock %}
