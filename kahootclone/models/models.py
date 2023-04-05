@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 import uuid
 import random
 
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 # Create your models here.
 
 
@@ -49,12 +49,11 @@ class Question(models.Model):
     questionnaire = models.ForeignKey('Questionnaire',
                                       on_delete=models.CASCADE)
     created_at = models.DateTimeField('creation', auto_now_add=True)
-    updated_at = models.DateTimeField('last-update', auto_now=True)  # default??
+    updated_at = models.DateTimeField('last-update', auto_now=True)
     answerTime = models.IntegerField()
 
     def __str__(self):
         return str(self.question)
-    
 
 
 class Answer(models.Model):
@@ -67,10 +66,10 @@ class Answer(models.Model):
 
     def __str__(self):
         return str(self.answer)
-    
+
     def set_correct(self, bool):
         self.correct = bool
-   
+
 
 class Game(models.Model):
     # game_id = models.AutoField(primary_key=True)
@@ -89,7 +88,7 @@ class Game(models.Model):
 
     def save(self, *args, **kwargs):  # an override
         self.publicId = random.randint(1, 1e6)
-        super(Game, self).save(*args, **kwargs) 
+        super(Game, self).save(*args, **kwargs)
     countdownTime = models.IntegerField(null=True, blank=True)
     questionNo = models.IntegerField(null=True, blank=True)
 
@@ -108,7 +107,7 @@ class Participant(models.Model):
     # def save(self, *args, **kwargs):  # turbio
     #     self.points += self.points  # change this
     #     super(Participant, self).save(*args, **kwargs)
-    
+
     def __str__(self):
         return str(self.alias) + ' ' + str(self.points)
 
@@ -119,7 +118,7 @@ class Guess(models.Model):
     game = models.ForeignKey('Game', on_delete=models.CASCADE)
     question = models.ForeignKey('Question', on_delete=models.CASCADE)
     answer = models.ForeignKey('Answer', on_delete=models.CASCADE)
-    
+
     def __str__(self):
         ret = str(self.answer) + ' ' + str(self.participant)
         ret += ' ' + str(self.question) + ' ' + str(self.game)

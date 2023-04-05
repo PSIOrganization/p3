@@ -31,10 +31,6 @@ class SignUp(View):
 
     http_method_names = ['get', 'post', 'head']
 
-    # def get(self, request):
-    #     template = loader.get_template('signup.html')
-    #     return HttpResponse(template.render(None, request)) 
-
     def get(self, request):
         form = MyUserCreationForm()
         return render(request, 'signup.html', {'form': form})
@@ -43,7 +39,6 @@ class SignUp(View):
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # no hace falta hacer authenticate ya que ya obtenemos el user al guardar el form
             login(request, user)
             print(user)
             return redirect('home')

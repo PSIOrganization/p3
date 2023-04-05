@@ -176,6 +176,7 @@ class Command(BaseCommand):
             else:
                 true_answer = random.choice(answers)
                 true_answer.set_correct(True)
+                true_answer.save()
                 print(" -> \"" + str(question) + "\" has as correct answer \""
                       + str(true_answer) + "\"")
 

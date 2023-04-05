@@ -15,6 +15,7 @@ TO-DO, no olvidar:
 -crear una db en neon y modificar settings para usar esta bd
 -makefile hacerlo bien
 -usar self.N_GAMES etc de self, no de las globales que pusimos arriba, que ya estaba en init
+-al hacer el juego comprobar los cuestionarios (numero de preguntas y correctness)
 
 17/03
   ENTORNO VIRTUAL:

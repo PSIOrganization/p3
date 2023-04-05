@@ -6,7 +6,7 @@
   <ul>
     {% for questionnaire in questionnaire_list %}
       <li>
-        <a href="{{ questionnaire.get_absolute_url }}">{{ questionnaire }}</a>
+        <a href="{{ questionnaire.get_absolute_url }}">{{ questionnaire }}</a> | 
         <a href="{% url 'questionnaire-update' questionnaire.id %}">Edit</a>
         <a href="{% url 'questionnaire-remove' questionnaire.id %}">Delete</a>
       </li>

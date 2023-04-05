@@ -14,7 +14,9 @@ from django.views.generic import View, ListView, DetailView
 
 from django.template import loader
 
-from models.models import User, Questionnaire, Question, Answer
+from models.models import User, Questionnaire, Question, Answer, Game, Participant
+import random
+import faker
 
 
 # Create your views here.
@@ -34,7 +36,7 @@ class HomePage(View):
                 'last_questionnaires': last_questionnaires,
             }
             return HttpResponse(template.render(context, request))
-        
+
         return HttpResponse(template.render(None, request))
         # first variable
         # is the variable dictionary to pass to the template
@@ -42,8 +44,8 @@ class HomePage(View):
 
 class QuestionnaireListView(LoginRequiredMixin, ListView):
     model = Questionnaire
-    context_object_name = 'questionnaire_list'   # your own name for the list as a template variable
-    template_name = 'models/questionnaire_list.html'  # Specify your own template name/location
+    context_object_name = 'questionnaire_list'
+    template_name = 'models/questionnaire_list.html'
 
     def get_queryset(self):
         return Questionnaire.objects.filter(user=self.request.user)
@@ -53,7 +55,7 @@ class QuestionnaireCreate(LoginRequiredMixin, CreateView):
     model = Questionnaire
     fields = ['title']
     success_url = reverse_lazy('questionnaire-list')
-    
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(QuestionnaireCreate, self).form_valid(form)
@@ -61,8 +63,7 @@ class QuestionnaireCreate(LoginRequiredMixin, CreateView):
 
 class QuestionnaireUpdate(LoginRequiredMixin, UpdateView):
     model = Questionnaire
-    fields = ['title']  # Not recommended
-    # (potential security issue if more fields added)
+    fields = ['title']
 
 
 class QuestionnaireDelete(LoginRequiredMixin, DeleteView):
@@ -119,3 +120,92 @@ class QuestionDelete(LoginRequiredMixin, DeleteView):
 
 class QuestionDetailView(LoginRequiredMixin, DetailView):
     model = Question
+
+    def get_context_data(self, **kwargs):
+        context = super(QuestionDetailView,
+                        self).get_context_data(**kwargs)
+        context['answer_list'] = Answer.objects.filter(
+            question=self.object)
+        context['number_answers'] = context['answer_list'].count()
+        return context
+
+
+class AnswerCreate(LoginRequiredMixin, CreateView):
+    model = Answer
+    fields = ['answer', 'correct']  # just one correct answer
+
+    def form_valid(self, form):
+        question_id = self.kwargs['pk']
+        question = get_object_or_404(Question, pk=question_id)
+        form.instance.question = question
+        return super(AnswerCreate, self).form_valid(form)
+
+    def get_success_url(self):
+        question_id = self.object.question.id
+        return reverse_lazy('question-detail',
+                            kwargs={'pk': question_id})
+
+
+class AnswerUpdate(LoginRequiredMixin, UpdateView):
+    model = Answer
+    fields = ['answer', 'correct']
+
+    def get_success_url(self):
+        question_id = self.object.question.id
+        return reverse_lazy('question-detail',
+                            kwargs={'pk': question_id})
+
+
+class AnswerDelete(LoginRequiredMixin, DeleteView):
+    model = Answer
+
+    def get_success_url(self):
+        question_id = self.object.question.id
+        return reverse_lazy('question-detail',
+                            kwargs={'pk': question_id})
+
+
+class GameCreate(LoginRequiredMixin, View):
+    model = Game
+
+    def validate(self, questionnaire):
+        # Validate if the questionnaire is valid
+        question_list = Question.objects.filter(questionnaire=questionnaire)
+        if question_list.count() <= 0:
+            return False
+
+        for question in question_list:
+            answer_list = Answer.objects.filter(question=question)
+            if answer_list.count() < 2 or answer_list.count() > 4:
+                return False
+            correct_answer = Answer.objects.filter(question=question,
+                                                   correct=True)
+            if correct_answer.count() != 1:
+                return False
+
+        return True
+
+    def get(self, request, **kwargs):
+        questionnaire = Questionnaire.objects.get(id=self.kwargs['pk'])
+        if not self.validate(questionnaire):
+            return redirect('questionnaire-detail', pk=self.kwargs['pk'])
+        context = dict()
+        context['game'] = Game(questionnaire=questionnaire)
+        context['game'].save()
+        return render(request, 'game_create.html', context)
+
+
+class GameUpdateParticipant(View):
+
+    def get(self, request, **kwargs):
+        game = Game.objects.get(publicId=kwargs['publicid'])
+        faker_name = faker.Faker()
+        # return HttpResponse(str(random.randint(500, 1000))
+        random_participant = Participant(game=game, alias=faker_name.word())
+        random_participant.save()
+        participant_list = Participant.objects.filter(game=game)
+        string = ""
+        for participant in participant_list:
+            string += str(participant) + "\n"
+        return HttpResponse(str(string))
+

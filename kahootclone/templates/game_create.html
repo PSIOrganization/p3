@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  function updateParticipants() {
+      $.ajax({
+          url: "{% url 'game-updateparticipant' game.publicId %}",
+          success: function(response) {
+              $("#participants").html(response);
+          },
+          error: function(xhr, status, error) {
+              console.log(xhr.responseText);
+          }
+      });
+  }
+  
+  setInterval(updateParticipants, 2000);
+  </script>
+  
+  <h1>Game</h1>
+  <p>Waiting lobby for questionnaire: {{ game.questionnaire.title }}</p>
+  <p>To join: {{ game.publicId }}</p>
+  <div id="participants">There is no one!!</div>
+{% endblock %}

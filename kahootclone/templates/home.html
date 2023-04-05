@@ -11,7 +11,9 @@
     <ul>
         <li><strong>Last five questionnaires:</strong></li>
         {% for questionnaire in last_questionnaires %}
-            <li><a href="{% url 'questionnaire-detail' questionnaire.id %}">{{ questionnaire.title }}</a></li>
+            <li><a href="{% url 'questionnaire-detail' questionnaire.id %}">{{ questionnaire.title }}</a>
+                | Updated on: {{ questionnaire.updated_at }}
+            </li>
         {% endfor %}
     </ul>
     <p><a href="{% url 'questionnaire-create' %}">New Questionnaire</a></p>
