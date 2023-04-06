@@ -47,8 +47,8 @@
 }
 
 .login-box form a {
-  position: relative;
-  display: inline-block;
+  position: static;
+  display: center;
   padding: 10px 20px;
   color: #ffffff;
   font-size: 16px;
@@ -71,7 +71,7 @@
 }
 
 .login-box a span {
-  position: absolute;
+  position: static;
   display: block;
 }
 
@@ -165,4 +165,8 @@
 
 .error{
   color: #fff;
+}
+
+.wrapper{
+  min-height: calc(100% - 4rem);
 }
