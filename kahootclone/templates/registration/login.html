@@ -3,7 +3,6 @@
 {% block content %}
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-  <div class="wrapper">
     <div class="login-box">
       <div class="error">
         {% if form.errors %}
@@ -51,6 +50,5 @@
       {# Assumes you setup the password_reset view in your URLconf #}
       <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
     </div>
-  </div>
   
 {% endblock %}

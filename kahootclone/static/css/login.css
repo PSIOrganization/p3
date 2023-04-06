@@ -75,15 +75,6 @@
   display: block;
 }
 
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
-  }
-
-  50%,100% {
-    left: 100%;
-  }
-}
 
 .login-box a span:nth-child(1) {
   bottom: 2px;
@@ -109,26 +100,6 @@
 
 }
 
-.button2:active {
-  color: #666;
-  box-shadow: inset 4px 4px 12px #c5c5c5,
-             inset -4px -4px 12px #ffffff;
-}
-
-.button2:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.25);
-  top: 100%;
-  width: 140%;
-  height: 180%;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
 
 .button2:after {
   content: "";
