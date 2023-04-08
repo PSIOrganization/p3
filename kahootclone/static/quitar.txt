@@ -1,1 +1,0 @@
-quitar cuando se añadan archivos static

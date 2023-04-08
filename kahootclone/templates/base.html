@@ -1,32 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-   <head>
-      <title>
-         {% block title %} Kahoot {% endblock %}
-      </title>
-   </head>
-   <body>
-      {% block header %} 
-      <p>Header goes here</p>
-      <hr>
-      {% endblock %}
-      {% block menu %}
-      <a href="{% url 'home' %}"> Homepage</a>
-      <a href="{% url 'login' %}"> Log In</a>
-      <a href="{% url 'logout' %}"> Log Out</a>
-      <a href="{% url 'signup' %}"> Sign Up</a>
-      <a href="#"> Cart</a>
-      <hr>
-      {% endblock %}
-      {% block content %}
-      <!-- main block -->
-      <hr>
-      {% endblock %}
-      {% block footer %} 
-      <hr>
-      <p>Footer goes here</p>
-      {% endblock %}
-   </body>
+<html lang="en">   
+      <head>
+         <title>
+            {% block title %} Kahoot {% endblock %}
+         </title>
+      </head>
+      {% load static %}
+      <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+         
+            {% block header %} 
+            <header class="cabecera">
+               <h1>PSI Kahoot</h1>
+            </header>
+            {% endblock %}
+            {% block menu %}
+            <body> 
+            <div class="longmenu">
+               <nav class="navMenu">
+               <a href="{% url 'home' %}"> Homepage</a>
+               <a href="{% url 'login' %}"> Log In</a>
+               <a href="{% url 'logout' %}"> Log Out</a>
+               <a href="{% url 'signup' %}"> Sign Up</a>
+               </nav>
+            </div>
+            {% endblock %}
+            {% block content %}
+            <!-- main block -->
+            {% endblock %}
+         </body>
+            {% block footer %} 
+            <footer class="main-footer">
+               <p>P3 PSI: manuloseta@estudiante.uam.es & elena.balseiro@estudiante.uam.es</p>
+           </footer>
+            
+            {% endblock %}
+   
 </html>
 <!-- Ejemplo de fichero base.html. 
 Esto es solo un ejemplo para empezar a trabajar, 

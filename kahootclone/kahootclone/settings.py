@@ -129,9 +129,11 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 # Static files (CSS, JavaScript, Images), subject to change later depending on where we put them
-STATIC_URL = 'static/'
-STATIC_ROOT = 'static/'
-
+STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
