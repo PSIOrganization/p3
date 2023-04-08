@@ -1,5 +1,5 @@
 create_super_user:
-	python3 ./manage.py createsuperuser
+	python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('alumnodb', 'alumnodb@uam.es', 'alumnodb')"
 
 populate:
 	python3 ./manage.py populate
