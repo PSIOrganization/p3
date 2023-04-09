@@ -134,10 +134,13 @@ LOGIN_REDIRECT_URL = '/'
 # subject to change later depending on where we put them
 
 STATIC_URL = 'static/'
-STATIC_ROOT = 'static-root/'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static/',
 ]
+
+if 'RENDER' in os.environ:
+    STATIC_ROOT = 'static-production/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
