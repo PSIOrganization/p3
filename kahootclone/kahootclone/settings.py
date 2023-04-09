@@ -28,7 +28,7 @@ if 'TESTING' in os.environ:
 else:
     # Only relevant in render deployment
     SECRET_KEY = os.getenv('SECRET_KEY')
-    DEBUG = False
+    DEBUG = False  # need to change this so that it is an environment variable
     ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
 
 # Application definition
@@ -146,6 +146,7 @@ if 'TESTING' in os.environ:
     db_from_env = dj_database_url.config(default='postgres://alumnodb:alumnodb@localhost:5432/psi', conn_max_age=500)
 else:
     # Use when deploy in render.com
+    # db stored in env variable
     # db_from_env = dj_database_url.config(default='postgres://manuloseta:YqE8iSA3gldb@ep-falling-king-350755.eu-central-1.aws.neon.tech/neondb', conn_max_age=500)
     pass
-DATABASES['default'].update(db_from_env) # Update the default database with the new settings
+DATABASES['default'].update(db_from_env)  # Update the default database with the new settings

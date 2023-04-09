@@ -50,7 +50,7 @@ class Question(models.Model):
                                       on_delete=models.CASCADE)
     created_at = models.DateTimeField('creation', auto_now_add=True)
     updated_at = models.DateTimeField('last-update', auto_now=True)
-    answerTime = models.IntegerField()
+    answerTime = models.IntegerField(null=True)
 
     def __str__(self):
         return str(self.question)
@@ -69,6 +69,9 @@ class Answer(models.Model):
 
     def set_correct(self, bool):
         self.correct = bool
+
+    def get_correct(self):
+        return self.correct
 
 
 class Game(models.Model):
@@ -104,12 +107,11 @@ class Participant(models.Model):
     points = models.IntegerField(default=1)
     uuidP = models.UUIDField(default=uuid.uuid4)
 
-    # def save(self, *args, **kwargs):  # turbio
-    #     self.points += self.points  # change this
-    #     super(Participant, self).save(*args, **kwargs)
-
     def __str__(self):
         return str(self.alias) + ' ' + str(self.points)
+
+    def bump_up(self):
+        self.points += 1
 
 
 class Guess(models.Model):
@@ -118,6 +120,11 @@ class Guess(models.Model):
     game = models.ForeignKey('Game', on_delete=models.CASCADE)
     question = models.ForeignKey('Question', on_delete=models.CASCADE)
     answer = models.ForeignKey('Answer', on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):
+        if self.answer.get_correct():
+            self.participant.bump_up()
+        super(Guess, self).save(*args, **kwargs)
 
     def __str__(self):
         ret = str(self.answer) + ' ' + str(self.participant)

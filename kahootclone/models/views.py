@@ -43,4 +43,4 @@ class SignUp(View):
             print(user)
             return redirect('home')
         else:
-            return redirect('home')
+            return redirect('home')  # change
