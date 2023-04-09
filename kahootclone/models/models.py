@@ -104,7 +104,7 @@ class Participant(models.Model):
     # participant_id = models.AutoField(primary_key=True)
     game = models.ForeignKey('Game', on_delete=models.CASCADE)
     alias = models.CharField(max_length=20)
-    points = models.IntegerField(default=1)
+    points = models.IntegerField(default=0)
     uuidP = models.UUIDField(default=uuid.uuid4)
 
     def __str__(self):
