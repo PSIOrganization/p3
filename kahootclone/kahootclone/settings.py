@@ -28,8 +28,10 @@ if 'TESTING' in os.environ:
 else:
     # Only relevant in render deployment
     SECRET_KEY = os.getenv('SECRET_KEY')
-    DEBUG = False  # need to change this so that it is an environment variable
+    DEBUG = 'RENDER' not in os.environ  # Only set to False in render
     ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
+
+# do the thing with allowed hosts
 
 # Application definition
 
@@ -40,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'models.apps.ModelsConfig',  # This object was created for us in /catalog/apps.py
+    'models.apps.ModelsConfig',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +130,8 @@ LOGIN_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-# Static files (CSS, JavaScript, Images), subject to change later depending on where we put them
+# Static files (CSS, JavaScript, Images)
+# subject to change later depending on where we put them
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
 STATICFILES_DIRS = [
@@ -143,10 +146,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # To see the current value just type echo $TESTING
 
 if 'TESTING' in os.environ:
-    db_from_env = dj_database_url.config(default='postgres://alumnodb:alumnodb@localhost:5432/psi', conn_max_age=500)
+    db_from_env = dj_database_url.config(
+        default='postgres://alumnodb:alumnodb@localhost:5432/psi',
+        conn_max_age=500)
 else:
     # Use when deploy in render.com
-    # db stored in env variable
-    # db_from_env = dj_database_url.config(default='postgres://manuloseta:YqE8iSA3gldb@ep-falling-king-350755.eu-central-1.aws.neon.tech/neondb', conn_max_age=500)
-    pass
-DATABASES['default'].update(db_from_env)  # Update the default database with the new settings
+    # db stored in env variable DATABASE_URL
+    db_from_env = dj_database_url.config(default=os.getenv('DATABASE_URL'),
+                                         conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+# Update the default database with the new settings
