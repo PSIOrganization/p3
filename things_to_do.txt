@@ -10,30 +10,30 @@ To pass with 5 points it is necessary to satisfy the following criteria complete
     YES  When running the tests in local, the number of fails is not larger than four and
     the code that satises the tests is functional.
     YES  The code of the tests was not modied.
-    NOT YET  The application works against the database created in https://neon.tech
+    YES  The application works against the database created in https://neon.tech
     and implemented using PostgreSQL.
     YES  The database admin application is deployed and accessible in the local Django
     server using as user name and password alumnodb.
     YES  It is possible to create and remove objects belonging to all the requested models
     using the admin application.
-    NOT YET  IMPORTANT: we need https://neon.tech URI in order to grade this assignment. Please write it down in a le called env and place it in the proyect
+    CHECK  IMPORTANT: we need https://neon.tech URI in order to grade this assignment. Please write it down in a le called env and place it in the proyect
     root directory.
 If the following criteria are accomplished, a grade up to 6.9 might be achieved:
      All the criteria in the previous paragraph are totally satised.
-    NO  The application is deployed in Render.com. In the le settings.py the path to
+    NOT YET  The application is deployed in Render.com. In the le settings.py the path to
     Render.com is assigned to the variable ALLOWED_HOSTS. Besides being deployed,
     the application works correctly in Render.com.
-    NOT YET  The code submitted to Moodle is identical to the one deployed in Render.com.
-    NOT YET  The database admin application is deployed and accessible in Render.com using
+    YES  The code submitted to Moodle is identical to the one deployed in Render.com.
+    YES  The database admin application is deployed and accessible in Render.com using
     as user name and password alumnodb.
-    NOT YET  It is possible to create and remove objects belonging to all the requested models
+    YES  It is possible to create and remove objects belonging to all the requested models
     using the admin application.
     YES  All the templates inherit from base.html.
     NOT YET  IMPORTANT: If you update the variable ALLOWED_HOSTS using a enviroment
     variable add it to the env le.
 If the following criteria are accomplished, a grade up to 7.9 might be achieved::
      All the criteria in the previous paragraph are totally satised.
-    NOT YET  Render.com is deployed in production mode. DEBUG=FALSE and SECRET_KEY is
+    YES  Render.com is deployed in production mode. DEBUG=FALSE and SECRET_KEY is
     not stored in settings.py.
     YES  All the views (classes/methods implemented in views.py) inherit from classes.
     NOT YET  When the tests are executed, the number of fails is not larger than two and
@@ -81,7 +81,7 @@ and services, satisfying the following requirements:
     YES  The project will include an admin page (Django interface in path http://
     hostname:8001/admin/) that allows to introduce and remove data. Both the
     user name and password for admin user must be alumnodb.
-    NO? RENDER  Data must be persisted in a PostgreSQL database stored in https://neon.
+    YES  Data must be persisted in a PostgreSQL database stored in https://neon.
     tech.
     YES?  The models application will include the data model described in subsection 2.3
     included in script populate.py.
@@ -94,7 +94,7 @@ and services, satisfying the following requirements:
     questionnaire (those whose alias starts with questionnarie) and the one needed
     to create the starting page (alias home) (see section 2.6).
     YES  The created code must satisfy at least the rst six tests dened in services.test_services.py.
-    NO  All the Python code you write must satisfy the style requirement highlighted
+    NOT YET  All the Python code you write must satisfy the style requirement highlighted
     by the ake8 utility. This requirement is not extensible to the code generated
     automatically by Django or the code provided by your teachers.
     YES The views (views.py) must be implemented using classes.
@@ -108,7 +108,7 @@ Work to be presented when the assignment ends
     test_additional.py.
     NOT YET  Include a le called coverage.txt in the project root that contains the result
     of running the command coverage for all the tests.
-    NOT YET  Deploy and test the application in Render.com in production mode (DEBUG=False, SECRET_KEY and DATABASE_URL in an environment
+    YES  Deploy and test the application in Render.com in production mode (DEBUG=False, SECRET_KEY and DATABASE_URL in an environment
     variable).
     NOT YET  Upload to Moodle the obtained le when running the command zip -r
     ../assign4_final.zip .git from the root of the project. Remember you
