@@ -136,7 +136,7 @@ LOGIN_REDIRECT_URL = '/'
 STATIC_URL = 'static/'
 # STATIC_ROOT = 'static/'
 STATICFILES_DIRS = [
-    'static/css',
+    BASE_DIR / 'static/',
 ]
 
 # Default primary key field type
