@@ -11,9 +11,9 @@ body {
     background: #009087;
     color: rgba(3, 21, 58, 0.987);
     height: 80px;
-    width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
-    left: 0; /* Posicionamos la cabecera al lado izquierdo */
-    top: 0; /* Posicionamos la cabecera pegada arriba */
+    width: 100%;
+    left: 0;
+    top: 0;
     position: static; 
     z-index: 200;
   }
@@ -43,7 +43,6 @@ body {
     padding: 1%;
 }
 
-/*MENÚ: homepage, log in, log out, sign up*/
 .navMenu {
     position: relative;
     display: flex;
