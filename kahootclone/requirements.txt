@@ -14,3 +14,4 @@ urllib3==1.26.9
 whitenoise==5.2.0
 python-dotenv==0.21.0
 Brotli==1.0.9
+Faker==18.4.0
