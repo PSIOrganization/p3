@@ -136,7 +136,7 @@ LOGIN_REDIRECT_URL = '/'
 STATIC_URL = 'static/'
 # STATIC_ROOT = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    'static/css',
 ]
 
 # Default primary key field type
