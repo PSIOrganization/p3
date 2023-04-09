@@ -72,3 +72,52 @@ submission.
 Note: The code used in the assessment of the assignment will be the one submitted
 to Moodle. Under no circumstance, the existing code in Render.com, Github, or any
 other repository will be used.
+
+----------------------------------------------------------------------------------------------------------------
+
+Summary of the work to be done during the rst half of the assignment
+Create a Django project called kahootclone that includes the applications models
+and services, satisfying the following requirements:
+    YES  The project will include an admin page (Django interface in path http://
+    hostname:8001/admin/) that allows to introduce and remove data. Both the
+    user name and password for admin user must be alumnodb.
+    NO? RENDER  Data must be persisted in a PostgreSQL database stored in https://neon.
+    tech.
+    YES?  The models application will include the data model described in subsection 2.3
+    included in script populate.py.
+    YES  The created code must satisfy the tests dened in models.tests_authentication
+    and models.test_models.
+    NOT YET  The coverage of les models.py must be 100%. The request of 100% coverage
+    applies exclusively to the code you create. Ignore the code created by Django
+    or the one provided by the teachers.
+    YES  The services application will include at least all the services related to the
+    questionnaire (those whose alias starts with questionnarie) and the one needed
+    to create the starting page (alias home) (see section 2.6).
+    YES  The created code must satisfy at least the rst six tests dened in services.test_services.py.
+    NO  All the Python code you write must satisfy the style requirement highlighted
+    by the ake8 utility. This requirement is not extensible to the code generated
+    automatically by Django or the code provided by your teachers.
+    YES The views (views.py) must be implemented using classes.
+
+----------------------------------------------------------------------------------------------------------------
+
+Work to be presented when the assignment ends
+    NOT YET  Make sure your code satises all the provided tests. Unless specied
+    otherwise, it is not acceptable to modify the code in the tests.
+    WE WILL  Implement all the tests you consider necessary to cover the developed functionality. These tests must be implemented in a le called
+    test_additional.py.
+    NOT YET  Include a le called coverage.txt in the project root that contains the result
+    of running the command coverage for all the tests.
+    NOT YET  Deploy and test the application in Render.com in production mode (DEBUG=False, SECRET_KEY and DATABASE_URL in an environment
+    variable).
+    NOT YET  Upload to Moodle the obtained le when running the command zip -r
+    ../assign4_final.zip .git from the root of the project. Remember you
+    have to add and commit the les to git before running that command. If
+    you want to check the content of the zip le is correct, you may do it by
+    running the command: cd ..; unzip assign4_final.zip; git clone
+    . tmpDir; ls tmpDir.
+    NOT YET  Verify the variable ALLOWED_HOSTS from le settings.py included in the
+    submission includes your deployment path in Render.com (if it does not
+    appear, we will grade the assignment as if the project was not deployed in
+    Render.com). In the same way, check in Render.com that your user name
+    and password for admin are alumnodb.
