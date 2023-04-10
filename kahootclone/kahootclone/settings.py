@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 if 'TESTING' in os.environ:
     SECRET_KEY = 'django-insecure-7u$ha(4f3bpru)v8i+0qjgtm^zoz@50+9b#kzof+%^lq^&(9)m'
-    DEBUG = True
-    ALLOWED_HOSTS = []
+    DEBUG = 'DEBUG' in os.environ  # Only set to True if DEBUG is set
+    ALLOWED_HOSTS = ['127.0.0.1']
 else:
     # Only relevant in render deployment
     SECRET_KEY = os.getenv('SECRET_KEY')
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'models.apps.ModelsConfig',
+    'services.apps.ServicesConfig',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'kahootclone.urls'
@@ -139,9 +141,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static/',
 ]
 
-if 'RENDER' in os.environ:
-    STATIC_ROOT = 'staticfiles/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -161,3 +160,6 @@ else:
                                          conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 # Update the default database with the new settings
+
+# if 'TESTING' not in os.environ:
+#     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

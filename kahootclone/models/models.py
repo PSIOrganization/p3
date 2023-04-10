@@ -50,7 +50,7 @@ class Question(models.Model):
                                       on_delete=models.CASCADE)
     created_at = models.DateTimeField('creation', auto_now_add=True)
     updated_at = models.DateTimeField('last-update', auto_now=True)
-    answerTime = models.IntegerField(null=True)
+    answerTime = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return str(self.question)
