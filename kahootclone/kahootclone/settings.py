@@ -135,7 +135,7 @@ LOGIN_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # subject to change later depending on where we put them
 
-STATIC_URL = 'staticfiles/'
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static/',
