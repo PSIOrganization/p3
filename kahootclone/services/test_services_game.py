@@ -124,8 +124,7 @@ class ServiceTests2(ServiceBaseTest):
         for id in range(10):
             Participant.objects.create(game=game, alias="alias_%d" % id)
             response = self.client1.get(
-                reverse(GAME_UPDATE_PARTICIPANT_SERVICE,
-                        kwargs={'publicid': game.publicId}), follow=True)
+                reverse(GAME_UPDATE_PARTICIPANT_SERVICE), follow=True)
             for participant in range(id+1):
                 print("checking participant", "alias_%d" % participant)
                 self.assertNotEqual(
@@ -149,8 +148,7 @@ class ServiceTests2(ServiceBaseTest):
         args = [str(id)]
         self.checkLogin(GAME_CREATE_SERVICE, 'DO_NOT_CHECK_KEY', args=args)
         response = self.client1.get(
-            reverse(GAME_UPDATE_PARTICIPANT_SERVICE,
-                    kwargs={'publicid': game.publicId}), follow=True)
+            reverse(GAME_UPDATE_PARTICIPANT_SERVICE), follow=True)
 
         self.assertNotEqual(
              self.decode(
