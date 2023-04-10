@@ -36,7 +36,7 @@ If the following criteria are accomplished, a grade up to 7.9 might be achieved:
     YES  Render.com is deployed in production mode. DEBUG=FALSE and SECRET_KEY is
     not stored in settings.py.
     YES  All the views (classes/methods implemented in views.py) inherit from classes.
-    NOT YET  When the tests are executed, the number of fails is not larger than two and
+    YES  When the tests are executed, the number of fails is not larger than two and
     the code that satises the tests is functional.
     NOT YET  The code is readable, ecient, well-structured, and commented.
     IG  The tools provided by the framework are used.
@@ -58,7 +58,7 @@ If the following criteria are accomplished, a grade up to 7.9 might be achieved:
     create answers guess without knowing the game.publicId, etc.
 If the following criteria are accomplished, a grade up to 8.9 might be achieved:
      All the previous criteria are accomplished completely.
-    NOT YET  Every test and all the run checks output success results.
+    YES  Every test and all the run checks output success results.
     WTF HOW  If we reduce the size of the browser window or use the zoom, all the elements
     in the page are still accessible and no functionality is lost.
 To aim for the maximum grade, the following criteria must be accomplished:
