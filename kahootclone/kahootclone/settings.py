@@ -28,7 +28,7 @@ if 'TESTING' in os.environ:
 else:
     # Only relevant in render deployment
     SECRET_KEY = os.getenv('SECRET_KEY')
-    DEBUG = 'RENDER' not in os.environ  # Only set to False in render
+    DEBUG = 'RENDER' not in os.environ  # Always set to False in render
     ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
 
 # do the thing with allowed hosts
