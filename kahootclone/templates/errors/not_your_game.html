@@ -5,4 +5,6 @@
     <p><strong>{{ error_message }}</strong></p>
      {% endif %}
 
+     <a href="{% url 'questionnaire-detail' questionnaire.id %}">Return to questionnaire</a>
+
 {% endblock %}

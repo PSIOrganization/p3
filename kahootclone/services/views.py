@@ -176,7 +176,7 @@ class GameCreate(LoginRequiredMixin, View):
 
         for question in question_list:
             answer_list = Answer.objects.filter(question=question)
-            if answer_list.count() < 2 or answer_list.count() > 4:
+            if answer_list.count() < 1 or answer_list.count() > 4:
                 return False
             correct_answer = Answer.objects.filter(question=question,
                                                    correct=True)
@@ -187,8 +187,8 @@ class GameCreate(LoginRequiredMixin, View):
 
     def get(self, request, **kwargs):
         questionnaire = Questionnaire.objects.get(id=self.kwargs['pk'])
-        # if not self.validate(questionnaire):
-        #     return redirect('questionnaire-detail', pk=self.kwargs['pk'])
+        if not self.validate(questionnaire):
+            return redirect('questionnaire-detail', pk=self.kwargs['pk'])
         context = dict()
         if request.user != questionnaire.user:
             context['error_message'] = "does not belong to logged user"
@@ -204,7 +204,13 @@ class GameUpdateParticipant(View):
     def get(self, request, **kwargs):
         game = Game.objects.get(publicId=kwargs['publicid'])
         faker_name = faker.Faker()
+        questionnaire = Questionnaire.objects.get(id=game.questionnaire.id)
         # return HttpResponse(str(random.randint(500, 1000))
+        if request.user != questionnaire.user:
+            context = dict()
+            context['error_message'] = "does not belong to logged user"
+            context['questionnaire'] = questionnaire
+            return render(request, 'errors/not_your_game.html', context)
         random_participant = Participant(game=game, alias=faker_name.word())
         random_participant.save()
         participant_list = Participant.objects.filter(game=game)
