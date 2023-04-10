@@ -22,4 +22,6 @@
   <p>Waiting lobby for questionnaire: {{ game.questionnaire.title }}</p>
   <p>To join: {{ game.publicId }}</p>
   <div id="participants">There is no one!!</div>
+  <hr>
+  <a href="{% url 'game-count-down' %}">Start Game</a>
 {% endblock %}

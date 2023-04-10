@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="text/javascript">
+    var count = 5;
+
+    // Actualizar el tiempo restante cada segundo
+    const temporizador = setInterval(function () {
+        count--;
+        document.getElementById('countdown').innerHTML = count;
+
+        if (count == 0) {
+            clearInterval(temporizador);
+            window.location.href = "{% url 'game-count-down' %}";
+        }
+    }, 1000);
+</script>
+
+<h1>Game</h1>
+<h3>{{ question.question }}</h3>
+<p>Correct answer is: {{ correct_answer.answer }}</p>
+<hr>
+{% if final %}
+    <p>That's the end!</p>
+{% else %}
+    <h3>Current leaderboard</h3>
+    <p>Not implemented</p>
+{% endif %}
+<p id="countdown"></p>
+
+{% endblock %}

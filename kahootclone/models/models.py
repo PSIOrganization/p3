@@ -88,12 +88,22 @@ class Game(models.Model):
 
     state = models.IntegerField(choices=State.choices, default=State.WAITING)
     publicId = models.IntegerField(unique=True)
+    countdownTime = models.IntegerField(null=True, blank=True)
+    questionNo = models.IntegerField(null=True, blank=True, default=0)
 
     def save(self, *args, **kwargs):  # an override
-        self.publicId = random.randint(1, 1e6)
+        if self.publicId is None:
+            self.publicId = random.randint(1, 1e6)
         super(Game, self).save(*args, **kwargs)
-    countdownTime = models.IntegerField(null=True, blank=True)
-    questionNo = models.IntegerField(null=True, blank=True)
+
+    def get_state(self):
+        return self.state
+
+    def set_state(self, state):
+        self.state = state
+
+    def bump_question(self):
+        self.questionNo += 1
 
     def __str__(self):
         ret = str(self.questionnaire) + ', ' + str(self.publicId)

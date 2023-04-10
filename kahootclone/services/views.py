@@ -15,6 +15,7 @@ from django.views.generic import View, ListView, DetailView
 from django.template import loader
 
 from models.models import User, Questionnaire, Question, Answer, Game, Participant
+from models.constants import WAITING, QUESTION, ANSWER, LEADERBOARD
 import random
 import faker
 
@@ -219,3 +220,52 @@ class GameUpdateParticipant(View):
         for participant in participant_list:
             string += str(participant) + "\n"
         return HttpResponse(str(string))
+
+
+class GameCountdown(View):
+
+    def get(self, request, **kwargs):
+        current_game = Game.objects.get(publicId=request.session['publicid'])
+        current_state = current_game.get_state()
+        if current_state == WAITING:
+            request.session['game_state'] = QUESTION
+            current_game.set_state(QUESTION)
+            current_game.save()
+            return render(request, 'game/countdown.html')
+        elif current_state == QUESTION:
+            question_list = Question.objects.filter(
+                questionnaire=current_game.questionnaire)
+            current_question = question_list[current_game.questionNo]
+            answer_list = Answer.objects.filter(question=current_question)
+
+            context = dict()
+            context['question'] = current_question
+            context['answer_list'] = answer_list
+
+            request.session['game_state'] = ANSWER
+            current_game.set_state(ANSWER)
+            current_game.save()
+            return render(request, 'game/question.html', context)
+        elif current_state == ANSWER:
+            question_list = Question.objects.filter(
+                questionnaire=current_game.questionnaire)
+            current_question = question_list[current_game.questionNo]
+            correct_answer = Answer.objects.get(question=current_question,
+                                                correct=True)
+            context = dict()
+            context['question'] = current_question
+            context['correct_answer'] = correct_answer
+
+            if question_list.count() == current_game.questionNo + 1:
+                request.session['game_state'] = LEADERBOARD
+                current_game.set_state(LEADERBOARD)
+                current_game.save()
+                context['final'] = True
+                return render(request, 'game/answer.html', context)
+            request.session['game_state'] = QUESTION
+            current_game.set_state(QUESTION)
+            current_game.bump_question()
+            current_game.save()
+            return render(request, 'game/answer.html', context)
+        elif current_state == LEADERBOARD:
+            return render(request, 'game/leaderboard.html')

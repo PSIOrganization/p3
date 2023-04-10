@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="text/javascript">
+    var count = "{{ question.answerTime }}";
+
+    // Actualizar el tiempo restante cada segundo
+    const temporizador = setInterval(function () {
+        count--;
+        document.getElementById('countdown').innerHTML = count;
+
+        if (count == 0) {
+            clearInterval(temporizador);
+            window.location.href = "{% url 'game-count-down' %}";
+        }
+    }, 1000);
+</script>
+
+<h1>Game</h1>
+<h3>{{ question.question }}</h3>
+{% for answer in answer_list %}
+    <p>-> {{ answer.answer }}</p>
+{% endfor %}
+<p id="countdown"></p>
+
+
+{% endblock %}
