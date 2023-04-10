@@ -171,8 +171,8 @@ class GameCreate(LoginRequiredMixin, View):
     def validate(self, questionnaire):
         # Validate if the questionnaire is valid
         question_list = Question.objects.filter(questionnaire=questionnaire)
-        if question_list.count() <= 0:
-            return False
+        # if question_list.count() <= 0:
+        #     return False
 
         for question in question_list:
             answer_list = Answer.objects.filter(question=question)
@@ -187,9 +187,13 @@ class GameCreate(LoginRequiredMixin, View):
 
     def get(self, request, **kwargs):
         questionnaire = Questionnaire.objects.get(id=self.kwargs['pk'])
-        if not self.validate(questionnaire):
-            return redirect('questionnaire-detail', pk=self.kwargs['pk'])
+        # if not self.validate(questionnaire):
+        #     return redirect('questionnaire-detail', pk=self.kwargs['pk'])
         context = dict()
+        if request.user != questionnaire.user:
+            context['error_message'] = "does not belong to logged user"
+            context['questionnaire'] = questionnaire
+            return render(request, 'errors/not_your_game.html', context)
         context['game'] = Game(questionnaire=questionnaire)
         context['game'].save()
         return render(request, 'game_create.html', context)

@@ -21,6 +21,9 @@
     <a href="{% url 'question-create' questionnaire.id %}">Add Question</a> 
     <br>
     <a href="{% url 'game-create' questionnaire.id %}">Start Game</a>
+    {% if error_message %}
+      <p style="color:red">{{ error_message }}</p>
+    {% endif %}
     
     </div>
 {% endblock %}
