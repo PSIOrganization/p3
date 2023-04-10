@@ -5,7 +5,7 @@
 <script>
   function updateParticipants() {
       $.ajax({
-          url: "{% url 'game-updateparticipant' game.publicId %}",
+          url: "{% url 'game-updateparticipant' %}",
           success: function(response) {
               $("#participants").html(response);
           },

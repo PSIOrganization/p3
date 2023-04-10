@@ -196,21 +196,22 @@ class GameCreate(LoginRequiredMixin, View):
             return render(request, 'errors/not_your_game.html', context)
         context['game'] = Game(questionnaire=questionnaire)
         context['game'].save()
+        request.session['publicid'] = context['game'].publicId
+        request.session['game_state'] = context['game'].state
         return render(request, 'game_create.html', context)
 
 
 class GameUpdateParticipant(View):
 
     def get(self, request, **kwargs):
-        game = Game.objects.get(publicId=kwargs['publicid'])
-        faker_name = faker.Faker()
-        questionnaire = Questionnaire.objects.get(id=game.questionnaire.id)
-        # return HttpResponse(str(random.randint(500, 1000))
-        if request.user != questionnaire.user:
+        if 'publicid' not in request.session:
             context = dict()
             context['error_message'] = "does not belong to logged user"
-            context['questionnaire'] = questionnaire
             return render(request, 'errors/not_your_game.html', context)
+
+        game = Game.objects.get(publicId=request.session['publicid'])
+        faker_name = faker.Faker()
+
         random_participant = Participant(game=game, alias=faker_name.word())
         random_participant.save()
         participant_list = Participant.objects.filter(game=game)
@@ -218,4 +219,3 @@ class GameUpdateParticipant(View):
         for participant in participant_list:
             string += str(participant) + "\n"
         return HttpResponse(str(string))
-

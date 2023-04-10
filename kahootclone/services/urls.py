@@ -38,7 +38,7 @@ urlpatterns += [
 urlpatterns += [
     path('gamecreate/<int:pk>/', views.GameCreate.as_view(),
          name='game-create'),
-    path('gameUpdateParticipant/<int:publicid>/',
+    path('gameUpdateParticipant/',
          views.GameUpdateParticipant.as_view(),
          name='game-updateparticipant')
 
