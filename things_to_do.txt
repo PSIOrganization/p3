@@ -63,7 +63,7 @@ If the following criteria are accomplished, a grade up to 8.9 might be achieved:
     in the page are still accessible and no functionality is lost.
 To aim for the maximum grade, the following criteria must be accomplished:
      All the previous criteria are accomplished completely.
-    NOT YET  The coverage for the files that contain the models, views, and forms is over
+    YES  The coverage for the files that contain the models, views, and forms is over
     99%.
     NO  Sound in pages seen by participants was implemented.
 
