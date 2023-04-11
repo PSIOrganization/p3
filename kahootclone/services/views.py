@@ -1,22 +1,17 @@
-import datetime
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required, permission_required
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
+from django.http import HttpResponse
+from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from django.views.generic import View, ListView, DetailView
 
 from django.template import loader
 
-from models.models import User, Questionnaire, Question, Answer, Game, Participant
+from models.models import Questionnaire, Question, Answer, Game, Participant
 from models.constants import WAITING, QUESTION, ANSWER, LEADERBOARD
-import random
 import faker
 
 

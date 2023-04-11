@@ -2,18 +2,11 @@
 # on lun ago 22 11:14:51 CEST 2022
 from django.test import TestCase
 from django.test.client import Client
-import random
-import string
 
 from models.models import User as User
 from models.models import Questionnaire as Questionnaire
 from models.models import Question as Question
 from models.models import Answer as Answer
-from models.models import Game as Game
-from models.models import Participant as Participant
-from models.models import Guess as Guess
-# we assume the different states are defined in constants.py
-from models.constants import WAITING
 
 from django.urls import reverse
 

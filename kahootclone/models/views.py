@@ -1,18 +1,9 @@
-import datetime
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required, permission_required
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
-from django.views.generic import View, ListView, DetailView
-
-from django.template import loader
+from django.views.generic import View
 
 from .models import User
 

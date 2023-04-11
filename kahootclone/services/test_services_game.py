@@ -8,12 +8,8 @@ from .test_services import ServiceBaseTest
 ###################
 # You may modify the following variables
 from models.models import User as User
-# from models.models import Questionnaire as Questionnaire
-from models.models import Question as Question
-# from models.models import Answer as Answer
 from models.models import Game as Game
 from models.models import Participant as Participant
-# from models.models import Guess as Guess
 
 # XXX_SERVICE is the alias of the service we want to tes
 # XXX_KEY is the key, in the context diccionary, with the information
