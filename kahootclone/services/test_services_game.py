@@ -187,3 +187,10 @@ class ServiceTests2(ServiceBaseTest):
         self.client1.get(reverse(GAME_QUESTION_SERVICE), follow=True)
         session = self.client1.session
         self.assertEqual(session[SESSION_STATE], LEADERBOARD)
+
+        response = self.client1.get(reverse(GAME_QUESTION_SERVICE),
+                                    follow=True)
+        session = self.client1.session
+        self.assertNotEqual(
+             self.decode(
+                 response.content).find("Final leaderboard"), -1)

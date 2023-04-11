@@ -43,4 +43,4 @@ class SignUp(View):
             print(user)
             return redirect('home')
         else:
-            return redirect('home')  # change
+            return render(request, 'signup.html', {'form': form})

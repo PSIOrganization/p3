@@ -188,9 +188,12 @@ class GameCreate(LoginRequiredMixin, View):
 
     def get(self, request, **kwargs):
         questionnaire = Questionnaire.objects.get(id=self.kwargs['pk'])
-        if not self.validate(questionnaire):
-            return redirect('questionnaire-detail', pk=self.kwargs['pk'])
         context = dict()
+        if not self.validate(questionnaire):
+            context['questionnaire_id'] = self.kwargs['pk']
+            context['error_message'] = "invalid questionnaire"
+            return render(request, 'errors/invalid_questionnaire.html',
+                          context)
         if request.user != questionnaire.user:
             context['error_message'] = "does not belong to logged user"
             context['questionnaire'] = questionnaire

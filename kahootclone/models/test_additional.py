@@ -1,11 +1,10 @@
 # created by R. Marabini
 # on lun ago 22 11:14:51 CEST 2022
 from django.test import TestCase
+from django.test.client import Client
 import random
 import string
 
-###################
-# You may modify the following variables
 from .models import User as User
 from .models import Questionnaire as Questionnaire
 from .models import Question as Question
@@ -16,8 +15,7 @@ from .models import Guess as Guess
 # we assume the different states are defined in constants.py
 from .constants import WAITING, ANSWER
 
-# Please do not modify anything below this line
-###################
+from django.urls import reverse
 
 
 class AdditionalTests(TestCase):
@@ -45,7 +43,7 @@ class AdditionalTests(TestCase):
         # additional functionality of Questionnaire
         questionnaire = self.createQuestionnaire(
             check=False)
-        print(questionnaire.get_absolute_url())
+
         self.assertEqual(questionnaire.get_absolute_url(),
                          '/kahoot-clone/questionnaire/' +
                          str(questionnaire.id) + '/')
@@ -64,6 +62,23 @@ class AdditionalTests(TestCase):
         self.assertEqual(game.state, game.get_state())
         game.bump_question()
         self.assertEqual(game.questionNo, 1)
+
+    def test_signup(self):
+        # additional functionality of signUp view
+        client = Client()
+        response = client.get(reverse('signup'))
+        self.assertEqual(response.status_code, 200)
+        user = {'username': 'testuser',
+                'password1': 'testpassword',
+                'password2': 'doesnotmatch',
+                }
+        response = client.post(reverse('signup'), user, follow=True)
+
+        # check that it redirects to the same page
+        self.assertEqual(response.status_code, 200)
+        # check that error message is present
+        self.assertNotEqual(response.content.decode('utf-8').find(
+            'The two password fields didn’t match.'), -1)
 
     def createQuestionnaire(self, check):
         def randStr(chars=string.ascii_uppercase + string.digits, N=10):
