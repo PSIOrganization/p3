@@ -25,12 +25,14 @@ if 'TESTING' in os.environ:
     SECRET_KEY = 'django-insecure-7u$ha(4f3bpru)v8i+0qjgtm^zoz@50+9b#kzof+%^lq^&(9)m'
     DEBUG = 'DEBUG' in os.environ  # Only set to True if DEBUG is set
     ALLOWED_HOSTS = ['127.0.0.1', 'https://p3-kahoot-elena-manu.onrender.com']
-    # first host is for local testing, second is for render deployment
+    # first host is for local testing, second is for Render deployment
 else:
     # Only relevant in render deployment
     SECRET_KEY = os.getenv('SECRET_KEY')
     DEBUG = 'RENDER' not in os.environ  # Always set to False in render
     ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
+
+# Django server URL in Render: https://p3-kahoot-elena-manu.onrender.com
 
 # do the thing with allowed hosts
 

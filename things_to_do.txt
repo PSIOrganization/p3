@@ -16,11 +16,11 @@ To pass with 5 points it is necessary to satisfy the following criteria complete
     server using as user name and password alumnodb.
     YES  It is possible to create and remove objects belonging to all the requested models
     using the admin application.
-    CHECK  IMPORTANT: we need https://neon.tech URI in order to grade this assignment. Please write it down in a le called env and place it in the proyect
+    YES  IMPORTANT: we need https://neon.tech URI in order to grade this assignment. Please write it down in a le called env and place it in the proyect
     root directory.
 If the following criteria are accomplished, a grade up to 6.9 might be achieved:
      All the criteria in the previous paragraph are totally satised.
-    NOT YET  The application is deployed in Render.com. In the le settings.py the path to
+    YES  The application is deployed in Render.com. In the le settings.py the path to
     Render.com is assigned to the variable ALLOWED_HOSTS. Besides being deployed,
     the application works correctly in Render.com.
     YES  The code submitted to Moodle is identical to the one deployed in Render.com.
@@ -29,7 +29,7 @@ If the following criteria are accomplished, a grade up to 6.9 might be achieved:
     YES  It is possible to create and remove objects belonging to all the requested models
     using the admin application.
     YES  All the templates inherit from base.html.
-    NOT YET  IMPORTANT: If you update the variable ALLOWED_HOSTS using a enviroment
+    YES  IMPORTANT: If you update the variable ALLOWED_HOSTS using a enviroment
     variable add it to the env le.
 If the following criteria are accomplished, a grade up to 7.9 might be achieved::
      All the criteria in the previous paragraph are totally satised.
@@ -52,7 +52,7 @@ If the following criteria are accomplished, a grade up to 7.9 might be achieved:
         CHECK  The style criteria highlighted by Flake8 are applied in a coherent way.
         Flake8 does not return any error when executed on the code programmed
         by the student.
-    CHECK It is impossible to impersonate a user (or participant) without knowing their
+    YES It is impossible to impersonate a user (or participant) without knowing their
     user name and password (or game.publicId). For example: (a) it is not possible to modify a questionnaire/question/answer without previously doing a
     login and accessing directly to the corresponding URL, (b) it is not possible to
     create answers guess without knowing the game.publicId, etc.
@@ -83,7 +83,7 @@ and services, satisfying the following requirements:
     user name and password for admin user must be alumnodb.
     YES  Data must be persisted in a PostgreSQL database stored in https://neon.
     tech.
-    YES?  The models application will include the data model described in subsection 2.3
+    YES  The models application will include the data model described in subsection 2.3
     included in script populate.py.
     YES  The created code must satisfy the tests dened in models.tests_authentication
     and models.test_models.
@@ -106,7 +106,7 @@ Work to be presented when the assignment ends
     otherwise, it is not acceptable to modify the code in the tests.
     YES  Implement all the tests you consider necessary to cover the developed functionality. These tests must be implemented in a le called
     test_additional.py.
-    NOT YET  Include a le called coverage.txt in the project root that contains the result
+    YES  Include a le called coverage.txt in the project root that contains the result
     of running the command coverage for all the tests.
     YES  Deploy and test the application in Render.com in production mode (DEBUG=False, SECRET_KEY and DATABASE_URL in an environment
     variable).
@@ -116,26 +116,8 @@ Work to be presented when the assignment ends
     you want to check the content of the zip le is correct, you may do it by
     running the command: cd ..; unzip assign4_final.zip; git clone
     . tmpDir; ls tmpDir.
-    NOT YET  Verify the variable ALLOWED_HOSTS from le settings.py included in the
+    YES  Verify the variable ALLOWED_HOSTS from le settings.py included in the
     submission includes your deployment path in Render.com (if it does not
     appear, we will grade the assignment as if the project was not deployed in
     Render.com). In the same way, check in Render.com that your user name
     and password for admin are alumnodb.
-
-    CHECK  IMPORTANT: we need https://neon.tech URI in order to grade this assignment. Please write it down in a le called env and place it in the proyect
-    root directory.
-
-    NOT YET  IMPORTANT: If you update the variable ALLOWED_HOSTS using a enviroment
-    variable add it to the env le.
-
-    NOT YET  The application is deployed in Render.com. In the le settings.py the path to
-    Render.com is assigned to the variable ALLOWED_HOSTS. Besides being deployed,
-    the application works correctly in Render.com.
-    NOT YET  Verify the variable ALLOWED_HOSTS from le settings.py included in the
-    submission includes your deployment path in Render.com (if it does not
-    appear, we will grade the assignment as if the project was not deployed in
-    Render.com). In the same way, check in Render.com that your user name
-    and password for admin are alumnodb.
-
-    YES  Deploy and test the application in Render.com in production mode (DEBUG=False, SECRET_KEY and DATABASE_URL in an environment
-    variable).

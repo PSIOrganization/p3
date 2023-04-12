@@ -105,6 +105,13 @@ class AdditionalTests(TestCase):
                             }
         self.answer3 = Answer.objects.get_or_create(**self.answerDict3)[0]
 
+        # third questionnaire
+        self.questionnaireDict3 = {"title": 'questionnaire_title3',
+                                   "user": self.user
+                                   }
+        self.questionnaire3 = Questionnaire.objects.get_or_create(
+            **self.questionnaireDict3)[0]
+
     def test_gameCreate(self):
         id = self.questionnaire1.id
         args = [str(id)]
@@ -115,6 +122,10 @@ class AdditionalTests(TestCase):
 
         # validate second defective questionnaire
         ret = GameCreate.validate(self, self.questionnaire2)
+        self.assertFalse(ret)
+
+        # validate third defective questionnaire
+        ret = GameCreate.validate(self, self.questionnaire3)
         self.assertFalse(ret)
 
         # show error message for first defective questionnaire
