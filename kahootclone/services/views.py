@@ -189,8 +189,8 @@ class GameCreate(LoginRequiredMixin, View):
             context['error'] = "invalid questionnaire, please check that"
             context['error2'] = "  - there is at least a question"
             context['error3'] = "  - there is at least an answer per question"
-            context['error4'] = "  - there is exactly one correct answer per "
-            "question"
+            error4 = "  - there is exactly one correct answer per question"
+            context['error4'] = error4
             return render(request, 'errors/invalid_questionnaire.html',
                           context)
         if request.user != questionnaire.user:
