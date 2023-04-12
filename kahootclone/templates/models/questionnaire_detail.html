@@ -24,6 +24,8 @@
     {% if error_message %}
       <p style="color:red">{{ error_message }}</p>
     {% endif %}
-    
+
     </div>
+
+    <a href="{% url 'questionnaire-list' %}">Return to Questionnaire List</a>
 {% endblock %}

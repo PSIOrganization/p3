@@ -167,8 +167,8 @@ class GameCreate(LoginRequiredMixin, View):
     def validate(self, questionnaire):
         # Validate if the questionnaire is valid
         question_list = Question.objects.filter(questionnaire=questionnaire)
-        # if question_list.count() <= 0:
-        #     return False
+        if question_list.count() <= 0:
+            return False
 
         for question in question_list:
             answer_list = Answer.objects.filter(question=question)
@@ -186,7 +186,11 @@ class GameCreate(LoginRequiredMixin, View):
         context = dict()
         if not self.validate(questionnaire):
             context['questionnaire_id'] = self.kwargs['pk']
-            context['error_message'] = "invalid questionnaire"
+            context['error'] = "invalid questionnaire, please check that"
+            context['error2'] = "  - there is at least a question"
+            context['error3'] = "  - there is at least an answer per question"
+            context['error4'] = "  - there is exactly one correct answer per "
+            "question"
             return render(request, 'errors/invalid_questionnaire.html',
                           context)
         if request.user != questionnaire.user:

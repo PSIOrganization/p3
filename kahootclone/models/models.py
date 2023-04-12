@@ -16,7 +16,7 @@ class User(AbstractUser):
         return self.username
 
     def __str__(self):
-        return str(self.username) + ", " + str(self.password)
+        return str(self.username)
 
 
 class Questionnaire(models.Model):
@@ -134,6 +134,7 @@ class Guess(models.Model):
     def save(self, *args, **kwargs):
         if self.answer.get_correct():
             self.participant.bump_up()
+            self.participant.save()
         super(Guess, self).save(*args, **kwargs)
 
     def __str__(self):

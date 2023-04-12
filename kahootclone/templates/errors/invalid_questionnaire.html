@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
- {% if error_message %}
-    <p><strong>{{ error_message }}</strong></p>
+ {% if error %}
+    <p><strong>{{ error }}</strong></p>
+    <p><strong>{{ error2 }}</strong></p>
+    <p><strong>{{ error3 }}</strong></p>
+    <p><strong>{{ error4 }}</strong></p>
      {% endif %}
 
      <a href="{% url 'questionnaire-detail' questionnaire_id %}">Return to questionnaire</a>

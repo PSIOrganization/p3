@@ -87,14 +87,14 @@ and services, satisfying the following requirements:
     included in script populate.py.
     YES  The created code must satisfy the tests dened in models.tests_authentication
     and models.test_models.
-    NOT YET  The coverage of les models.py must be 100%. The request of 100% coverage
+    YES  The coverage of les models.py must be 100%. The request of 100% coverage
     applies exclusively to the code you create. Ignore the code created by Django
     or the one provided by the teachers.
     YES  The services application will include at least all the services related to the
     questionnaire (those whose alias starts with questionnarie) and the one needed
     to create the starting page (alias home) (see section 2.6).
     YES  The created code must satisfy at least the rst six tests dened in services.test_services.py.
-    NOT YET  All the Python code you write must satisfy the style requirement highlighted
+    YES  All the Python code you write must satisfy the style requirement highlighted
     by the ake8 utility. This requirement is not extensible to the code generated
     automatically by Django or the code provided by your teachers.
     YES The views (views.py) must be implemented using classes.
@@ -102,9 +102,9 @@ and services, satisfying the following requirements:
 ----------------------------------------------------------------------------------------------------------------
 
 Work to be presented when the assignment ends
-    NOT YET  Make sure your code satises all the provided tests. Unless specied
+    YES  Make sure your code satises all the provided tests. Unless specied
     otherwise, it is not acceptable to modify the code in the tests.
-    WE WILL  Implement all the tests you consider necessary to cover the developed functionality. These tests must be implemented in a le called
+    YES  Implement all the tests you consider necessary to cover the developed functionality. These tests must be implemented in a le called
     test_additional.py.
     NOT YET  Include a le called coverage.txt in the project root that contains the result
     of running the command coverage for all the tests.
@@ -121,3 +121,21 @@ Work to be presented when the assignment ends
     appear, we will grade the assignment as if the project was not deployed in
     Render.com). In the same way, check in Render.com that your user name
     and password for admin are alumnodb.
+
+    CHECK  IMPORTANT: we need https://neon.tech URI in order to grade this assignment. Please write it down in a le called env and place it in the proyect
+    root directory.
+
+    NOT YET  IMPORTANT: If you update the variable ALLOWED_HOSTS using a enviroment
+    variable add it to the env le.
+
+    NOT YET  The application is deployed in Render.com. In the le settings.py the path to
+    Render.com is assigned to the variable ALLOWED_HOSTS. Besides being deployed,
+    the application works correctly in Render.com.
+    NOT YET  Verify the variable ALLOWED_HOSTS from le settings.py included in the
+    submission includes your deployment path in Render.com (if it does not
+    appear, we will grade the assignment as if the project was not deployed in
+    Render.com). In the same way, check in Render.com that your user name
+    and password for admin are alumnodb.
+
+    YES  Deploy and test the application in Render.com in production mode (DEBUG=False, SECRET_KEY and DATABASE_URL in an environment
+    variable).

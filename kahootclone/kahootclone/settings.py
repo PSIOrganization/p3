@@ -24,7 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if 'TESTING' in os.environ:
     SECRET_KEY = 'django-insecure-7u$ha(4f3bpru)v8i+0qjgtm^zoz@50+9b#kzof+%^lq^&(9)m'
     DEBUG = 'DEBUG' in os.environ  # Only set to True if DEBUG is set
-    ALLOWED_HOSTS = ['127.0.0.1']
+    ALLOWED_HOSTS = ['127.0.0.1', 'https://p3-kahoot-elena-manu.onrender.com']
+    # first host is for local testing, second is for render deployment
 else:
     # Only relevant in render deployment
     SECRET_KEY = os.getenv('SECRET_KEY')
@@ -167,6 +168,3 @@ else:
                                          conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 # Update the default database with the new settings
-
-# if 'TESTING' not in os.environ:
-#     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

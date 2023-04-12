@@ -28,12 +28,6 @@ from django.contrib.auth.hashers import make_password
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'kahootclone.settings')
 django.setup()
 
-# ya estaba en init tonto
-N_QUESTIONNAIRES = 2
-N_QUESTIONS = 6
-N_ANSWERS = 20
-N_GAMES = 2
-
 # The name of this class is not optional must be Command
 # otherwise manage.py will not process it properly
 
@@ -65,12 +59,10 @@ class Command(BaseCommand):
         else:
             pass
 
-        self.NUMBERUSERS = 4
-        self.NUMBERQESTIONARIES = 30
-        self.NUMBERQUESTIONS = 100
-        self.NUMBERPARTICIPANTS = 20
-        self.NUMBERANSWERPERQUESTION = 4
-        self.NUMBERGAMES = 4
+        self.N_QUESTIONNARIES = 2
+        self.N_QUESTIONS = 6
+        self.N_ANSWERS = 20
+        self.N_GAMES = 5
 
     # handle is another compulsory name, do not change it"
     # handle function will be executed by 'manage populate'
@@ -93,12 +85,7 @@ class Command(BaseCommand):
         # order in which data is deleted is important
         # your code goes here...
         print("clean Database")
-
         User.objects.all().delete()
-        print(Questionnaire.objects.all().count())
-        print(Question.objects.all().count())
-        print(Answer.objects.all().count())
-        print(Game.objects.all().count())
 
     def user(self):
         " Insert users"
@@ -118,7 +105,7 @@ class Command(BaseCommand):
     def questionnaire(self):
         "insert questionnaires"
         print("Questionnaires")
-        questionnaires = self.faker.words(N_QUESTIONNAIRES)
+        questionnaires = self.faker.words(self.N_QUESTIONNARIES)
         # assign users randomly to the questionnaires
         items = list(User.objects.all())
 
@@ -134,7 +121,7 @@ class Command(BaseCommand):
         " insert questions, assign randomly to questionnaires"
         print("Questions")
         items = list(Questionnaire.objects.all())
-        for _ in range(N_QUESTIONS):
+        for _ in range(self.N_QUESTIONS):
             q = self.faker.text(20)
             q = q.replace(".", "?")
             # print(questions)
@@ -151,7 +138,7 @@ class Command(BaseCommand):
         print("Answers")
         # your code goes here
         items = list(Question.objects.all())
-        for _ in range(N_ANSWERS):
+        for _ in range(self.N_ANSWERS):
             a = self.faker.word()
             # print(questions)
             random_question = random.choice(items)
@@ -186,7 +173,7 @@ class Command(BaseCommand):
         # assign users randomly to the questionnaires
         items = list(Questionnaire.objects.all())
 
-        for _ in range(N_GAMES):
+        for _ in range(self.N_GAMES):
             random_q = random.choice(items)
             game = Game(questionnaire=random_q)
             game.save()
