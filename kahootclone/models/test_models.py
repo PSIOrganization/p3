@@ -16,7 +16,7 @@ from .models import Game as Game
 from .models import Participant as Participant
 from .models import Guess as Guess
 # we assume the different states are defined in constants.py
-from .constants import WAITING as WAITING
+from .constants import WAITING as WAITING, QUESTION as QUESTION
 
 # Please do not modify anything below this line
 ###################
@@ -150,6 +150,9 @@ class ModelTests(TestCase):
 
     def createGuess(self, check):
         game = self.createGame(check=False)
+        game.state = QUESTION
+        game.questionNo = 1
+        game.save()
         participant = self.createParticipant(check=False)
         answer = self.createAnswer(check=False)
         question = self.createQuestion(check=False)
