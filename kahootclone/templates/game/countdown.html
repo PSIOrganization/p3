@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load static %}
+<audio controls loop autoplay hidden>
+    <source src="{% static 'audio/lobby.mp3' %}" 
+    type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 
 <script type="text/javascript">
     var count = 10;
