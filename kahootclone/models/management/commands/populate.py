@@ -33,8 +33,9 @@ django.setup()
 
 
 class Command(BaseCommand):
-    """helps and arguments shown when command python manage.py help populate
-    is executed."""
+    """
+    This class is compulsory, do not change its name
+    """
     help = """populate kahootclone database"""
 
     # if you want to pass an argument to the function
@@ -67,7 +68,9 @@ class Command(BaseCommand):
     # handle is another compulsory name, do not change it"
     # handle function will be executed by 'manage populate'
     def handle(self, *args, **kwargs):
-        "this function will be executed by default"
+        """
+        This function will be executed by 
+        """
 
         self.cleanDataBase()   # clean database
         # The faker.Faker() creates and initializes a faker generator,
@@ -80,15 +83,15 @@ class Command(BaseCommand):
         self.game()  # create games
 
     def cleanDataBase(self):
-        """Delete all models stored (clean table)
-        in database
-        order in which data is deleted is important
-        your code goes here...
-        print("clean Database")"""
+        """
+        Clean the database before inputting new data
+        """
         User.objects.all().delete()
 
     def user(self):
-        """ Create two random users and insert them """
+        """
+        Create two random users and insert them
+        """
         print("Users")
 
         usernames = self.faker.words(2)
@@ -102,7 +105,9 @@ class Command(BaseCommand):
         print(" -> " + usernames[1] + ", with password " + password2)
 
     def questionnaire(self):
-        """ Create N_QUESTIONNARIES and insert them"""
+        """
+        Create N_QUESTIONNARIES and insert them
+        """
         print("Questionnaires")
         questionnaires = self.faker.words(self.N_QUESTIONNARIES)
         # assign users randomly to the questionnaires
@@ -117,7 +122,9 @@ class Command(BaseCommand):
                   str(questionnaire.getUser().get_username()))
 
     def question(self):
-        """insert questions, assign randomly to questionnaires"""
+        """
+        Insert questions, assign randomly to questionnaires
+        """
         print("Questions")
         items = list(Questionnaire.objects.all())
         for _ in range(self.N_QUESTIONS):
@@ -133,7 +140,9 @@ class Command(BaseCommand):
                   str(question.answerTime))
 
     def answer(self):
-        """insert answers, one of them must be the correct one"""
+        """
+        Insert answers, one of them must be the correct one
+        """
         print("Answers")
         # your code goes here
         items = list(Question.objects.all())
@@ -152,6 +161,9 @@ class Command(BaseCommand):
                 items.remove(random_question)
 
     def assign_correct_answer(self):
+        """
+        Sets correct answer
+        """
         print("Correct answer for each question")
         items = list(Question.objects.all())
         for question in items:
@@ -167,7 +179,9 @@ class Command(BaseCommand):
                       + str(true_answer) + "\"")
 
     def game(self):
-        """insert some games"""
+        """
+        Creates a game by assigning random questionnaires
+        """
         print("Game")
         # assign users randomly to the questionnaires
         items = list(Questionnaire.objects.all())

@@ -30,7 +30,7 @@
     {% if number_answers < 4 %}
       <a href="{% url 'answer-create' question.id %}">Add Answer</a>
     {% endif %}
-
+    <br>
 
   <a href="{% url 'questionnaire-detail' question.questionnaire.id %}">Return to Questionnaire</a>
 {% endblock %}

@@ -45,7 +45,7 @@ If the following criteria are accomplished, a grade up to 7.9 might be achieved:
         directly or indirectly from class forms.Form.
         YES  The searches are done by the database. Do not not load all the elements
         of a table and implement the search in the views dened in view.py.
-        CHECK  The errors are properly processed and understandable message errors are
+        YES  The errors are properly processed and understandable message errors are
         returned.
         NOT YET  The code presents a consistent style and the functions are commented
         including their author. Note: the author of a function must be unique.
