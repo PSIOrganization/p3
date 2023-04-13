@@ -1,10 +1,14 @@
+'''
+File: models.py
+Defines the models for the application
+'''
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 import random
 
 from django.urls import reverse
-# Create your models here.
 
 
 class User(AbstractUser):

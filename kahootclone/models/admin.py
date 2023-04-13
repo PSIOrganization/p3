@@ -1,6 +1,10 @@
+'''
+File: admin.py
+Lets the admin interface know about the models
+'''
+
 from django.contrib import admin
 
-# Register your models here.
 from .models import User, Questionnaire, Question, Answer
 from .models import Game, Participant, Guess
 

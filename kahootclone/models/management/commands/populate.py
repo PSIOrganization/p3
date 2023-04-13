@@ -33,8 +33,8 @@ django.setup()
 
 
 class Command(BaseCommand):
-    # helps and arguments shown when command python manage.py help populate
-    # is executed.
+    """helps and arguments shown when command python manage.py help populate
+    is executed."""
     help = """populate kahootclone database"""
 
     # if you want to pass an argument to the function
@@ -80,16 +80,15 @@ class Command(BaseCommand):
         self.game()  # create games
 
     def cleanDataBase(self):
-        # delete all models stored (clean table)
-        # in database
-        # order in which data is deleted is important
-        # your code goes here...
-        print("clean Database")
+        """Delete all models stored (clean table)
+        in database
+        order in which data is deleted is important
+        your code goes here...
+        print("clean Database")"""
         User.objects.all().delete()
 
     def user(self):
-        " Insert users"
-        # create user
+        """ Create two random users and insert them """
         print("Users")
 
         usernames = self.faker.words(2)
@@ -103,7 +102,7 @@ class Command(BaseCommand):
         print(" -> " + usernames[1] + ", with password " + password2)
 
     def questionnaire(self):
-        "insert questionnaires"
+        """ Create N_QUESTIONNARIES and insert them"""
         print("Questionnaires")
         questionnaires = self.faker.words(self.N_QUESTIONNARIES)
         # assign users randomly to the questionnaires
@@ -118,7 +117,7 @@ class Command(BaseCommand):
                   str(questionnaire.getUser().get_username()))
 
     def question(self):
-        " insert questions, assign randomly to questionnaires"
+        """insert questions, assign randomly to questionnaires"""
         print("Questions")
         items = list(Questionnaire.objects.all())
         for _ in range(self.N_QUESTIONS):
@@ -134,7 +133,7 @@ class Command(BaseCommand):
                   str(question.answerTime))
 
     def answer(self):
-        "insert answers, one of them must be the correct one"
+        """insert answers, one of them must be the correct one"""
         print("Answers")
         # your code goes here
         items = list(Question.objects.all())
@@ -168,7 +167,7 @@ class Command(BaseCommand):
                       + str(true_answer) + "\"")
 
     def game(self):
-        "insert some games"
+        """insert some games"""
         print("Game")
         # assign users randomly to the questionnaires
         items = list(Questionnaire.objects.all())
