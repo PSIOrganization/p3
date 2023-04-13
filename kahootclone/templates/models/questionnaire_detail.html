@@ -4,28 +4,25 @@
   <h1>Questionnaire: {{ questionnaire.title }}</h1>
   <p>Created at: {{ questionnaire.created_at }}</p>
   <p>Updated at: {{ questionnaire.updated_at }}</p>
+  <h4>Questions</h4>
+  
+  <ul>
+  {% for question in question_list %}
+    <li>
+      <a href="{% url 'question-detail' question.id %}">{{question}}</a> | 
+      <a href="{% url 'question-update' question.id %}">Edit</a>
+      <a href="{% url 'question-remove' question.id %}">Remove</a>
+    </li>
+  {% endfor %}
+  </ul>
 
-  <div style="margin-left:20px;margin-top:20px"> 
-    <h4>Questions</h4>
-    
-    <ul>
-    {% for question in question_list %}
-      <li>
-        <a href="{% url 'question-detail' question.id %}">{{question}}</a> | 
-        <a href="{% url 'question-update' question.id %}">Edit</a>
-        <a href="{% url 'question-remove' question.id %}">Remove</a>
-      </li>
-    {% endfor %}
-    </ul>
+  <a href="{% url 'question-create' questionnaire.id %}">Add Question</a> 
+  <br>
+  <a href="{% url 'game-create' questionnaire.id %}">Start Game</a>
+  <br>
+  {% if error_message %}
+    <p style="color:red">{{ error_message }}</p>
+  {% endif %}
 
-    <a href="{% url 'question-create' questionnaire.id %}">Add Question</a> 
-    <br>
-    <a href="{% url 'game-create' questionnaire.id %}">Start Game</a>
-    {% if error_message %}
-      <p style="color:red">{{ error_message }}</p>
-    {% endif %}
-
-    </div>
-
-    <a href="{% url 'questionnaire-list' %}">Return to Questionnaire List</a>
+  <a href="{% url 'questionnaire-list' %}">Return to Questionnaire List</a>
 {% endblock %}

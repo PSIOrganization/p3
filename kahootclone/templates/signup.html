@@ -1,14 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
-  <div class="login-box">
-  <div class="login">
+
     <form method="post">
       {% csrf_token %}
       {% for field in form %}
-      <div class="user-box">
         <p>
           {{ field.label_tag }}<br>
           {{ field }}
@@ -19,13 +15,9 @@
             <p style="color: red">{{ error }}</p>
           {% endfor %}
         </p>
-      </div>
-       
+  
       {% endfor %}
-      <center>
-        <button class?= "button2" type="submit">Sign up</button><span></span>
-      </center>
-      
+        <button type="submit">Sign up</button>
     </form>
   </div>
   </div>

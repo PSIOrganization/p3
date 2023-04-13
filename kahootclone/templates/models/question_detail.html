@@ -8,9 +8,8 @@
   <p>Updated at: {{ question.updated_at }}</p>
   <p>Answer Time: {{ question.answerTime }}</p>
 
-  <div style="margin-left:20px;margin-top:20px">
-    <h4>Answers</h4>
 
+    <h4>Answers</h4>
     <ul>
       {% for answer in answer_list %}
         <li>
@@ -32,6 +31,6 @@
       <a href="{% url 'answer-create' question.id %}">Add Answer</a>
     {% endif %}
 
-  </div>
+
   <a href="{% url 'questionnaire-detail' question.questionnaire.id %}">Return to Questionnaire</a>
 {% endblock %}

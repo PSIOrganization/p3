@@ -7,14 +7,12 @@
       </head>
       {% load static %}
       <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-         
+         <body> 
             {% block header %} 
             <header class="cabecera">
                <h1>PSI Kahoot</h1>
             </header>
             {% endblock %}
-            {% block menu %}
-            <body> 
             <div class="longmenu">
                <nav class="navMenu">
                <a href="{% url 'home' %}"> Homepage</a>
@@ -23,19 +21,15 @@
                <a href="{% url 'signup' %}"> Sign Up</a>
                </nav>
             </div>
-            {% endblock %}
-            {% block content %}
-            <!-- main block -->
-            {% endblock %}
-         </body>
-            {% block footer %} 
-            <footer class="main-footer">
-               <p>P3 PSI: manuloseta@estudiante.uam.es & elena.balseiro@estudiante.uam.es</p>
-           </footer>
-            
-            {% endblock %}
-   
+            <div id="page-container">
+               <div id="content">
+                  {% block content %}
+                  <!-- main block -->
+                  {% endblock %}
+               </div>
+               <div id="footer">
+                     <p>P3 PSI: manuloseta@estudiante.uam.es & elena.balseiro@estudiante.uam.es</p>
+               </div>  
+            </div>
+         </body> 
 </html>
-<!-- Ejemplo de fichero base.html. 
-Esto es solo un ejemplo para empezar a trabajar, 
-se espera que lo modifiquéis tanto como sea necesario. --> 
