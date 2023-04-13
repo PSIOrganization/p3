@@ -1,3 +1,8 @@
+'''
+File: urls.py
+Defines the urls for the services app
+'''
+
 from django.urls import path
 from . import views
 

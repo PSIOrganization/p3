@@ -1,14 +1,8 @@
-# Populate database
-# This file has to be placed within the
-# catalog/management/commands directory in your project.
-# If that directory doesn't exist, create it.
-# The name of the script is the name of the custom command,
-# that is, populate.py.
-#
-# execute python manage.py  populate
-#
-# use module Faker generator to generate data
-# (https://zetcode.com/python/faker/)
+'''
+File: populate.py
+Populates the database with random data
+'''
+
 import os
 
 import django

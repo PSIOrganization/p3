@@ -1,5 +1,8 @@
-# created by R. Marabini
-# on lun ago 22 11:14:51 CEST 2022
+'''
+File: test_additional.py
+Defines some additional tests for the models
+'''
+
 from django.test import TestCase
 from django.test.client import Client
 import random
@@ -40,7 +43,10 @@ class AdditionalTests(TestCase):
         return item
 
     def test_questionnaire(self):
-        # additional functionality of Questionnaire
+        """
+        additional functionality of Questionnaire
+        @author: José Manuel López-Serrano Tapia
+        """
         questionnaire = self.createQuestionnaire(
             check=False)
 
@@ -50,13 +56,19 @@ class AdditionalTests(TestCase):
         self.assertEqual(questionnaire.getUser(), questionnaire.user)
 
     def test_answer(self):
-        # additional functionality of Answer
+        """
+        additional functionality of Answer
+        @author: Elena Balseiro García
+        """
         answer = self.createAnswer(check=False)
         answer.set_correct(False)
         self.assertFalse(answer.get_correct())
 
     def test_game(self):
-        # additional functionality of Game
+        """
+        additional functionality of Game
+        @author: José Manuel López-Serrano Tapia
+        """
         game = self.createGame(check=False)
         game.set_state(ANSWER)
         self.assertEqual(game.state, game.get_state())
@@ -64,7 +76,10 @@ class AdditionalTests(TestCase):
         self.assertEqual(game.questionNo, 1)
 
     def test_signup(self):
-        # additional functionality of signUp view
+        """
+        additional functionality of signUp view
+        @author: Elena Balseiro García
+        """
         client = Client()
         response = client.get(reverse('signup'))
         self.assertEqual(response.status_code, 200)

@@ -1,5 +1,7 @@
-# created by R. Marabini
-# on lun ago 22 11:14:51 CEST 2022
+'''
+File: test_additional.py
+Test additional functionalities of the models
+'''
 from django.test import TestCase
 from django.test.client import Client
 
@@ -37,6 +39,11 @@ class AdditionalTests(TestCase):
         return response
 
     def setUp(self):
+        '''
+        Create a user, a questionnaire, a question, two answers and
+        three questionnaires
+        @author: Elena Balseiro García
+        '''
         # user
         self.userDict = {"username": 'a',
                          "password": 'a',
@@ -113,6 +120,10 @@ class AdditionalTests(TestCase):
             **self.questionnaireDict3)[0]
 
     def test_gameCreate(self):
+        '''
+        Test gameCreate view
+        @author: José Manuel López-Serrano Tapia
+        '''
         id = self.questionnaire1.id
         args = [str(id)]
 
