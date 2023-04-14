@@ -27,6 +27,7 @@ urlpatterns = [
 urlpatterns += [
     path('kahoot-clone/', include('services.urls')),
     path('kahoot-clone/', include('models.urls')),
+    path('api/', include('restServer.urls')),  # idk if this is right
     path('', RedirectView.as_view(url='kahoot-clone/', permanent=False)),
 ]
 
