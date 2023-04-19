@@ -12,6 +12,8 @@ from django.views.generic import View
 
 from .models import User
 
+from rest_framework.renderers import JSONRenderer
+
 
 class MyUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
