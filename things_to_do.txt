@@ -1,123 +1,28 @@
-Evaluation criteria
-Note: When grading this assessment, the aesthetics will NOT be considered (it will
-be evaluated in the next assignment).
-To pass with 5 points it is necessary to satisfy the following criteria completely:
-    YES  All the needed files to run the application have been submitted on time.
-    YES  The code was stored in a git repository and this repository is private.
-    YES  The file uploaded to Moodle contains a git repository.
-    YES  The script populate.py exists and is functional.
-    YES  The application can be executed locally.
-    YES  When running the tests in local, the number of fails is not larger than four and
-    the code that satises the tests is functional.
-    YES  The code of the tests was not modied.
-    YES  The application works against the database created in https://neon.tech
-    and implemented using PostgreSQL.
-    YES  The database admin application is deployed and accessible in the local Django
-    server using as user name and password alumnodb.
-    YES  It is possible to create and remove objects belonging to all the requested models
-    using the admin application.
-    YES  IMPORTANT: we need https://neon.tech URI in order to grade this assignment. Please write it down in a le called env and place it in the proyect
-    root directory.
-If the following criteria are accomplished, a grade up to 6.9 might be achieved:
-     All the criteria in the previous paragraph are totally satised.
-    YES  The application is deployed in Render.com. In the le settings.py the path to
-    Render.com is assigned to the variable ALLOWED_HOSTS. Besides being deployed,
-    the application works correctly in Render.com.
-    YES  The code submitted to Moodle is identical to the one deployed in Render.com.
-    YES  The database admin application is deployed and accessible in Render.com using
-    as user name and password alumnodb.
-    YES  It is possible to create and remove objects belonging to all the requested models
-    using the admin application.
-    YES  All the templates inherit from base.html.
-    YES  IMPORTANT: If you update the variable ALLOWED_HOSTS using a enviroment
-    variable add it to the env le.
-If the following criteria are accomplished, a grade up to 7.9 might be achieved::
-     All the criteria in the previous paragraph are totally satised.
-    YES  Render.com is deployed in production mode. DEBUG=FALSE and SECRET_KEY is
-    not stored in settings.py.
-    YES  All the views (classes/methods implemented in views.py) inherit from classes.
-    YES  When the tests are executed, the number of fails is not larger than two and
-    the code that satises the tests is functional.
-    NOT YET  The code is readable, ecient, well-structured, and commented.
-    IG  The tools provided by the framework are used.
-     The following are examples of the previous points:
-        YES?  Every form that involves a model is created in such a way that it inherits
-        directly or indirectly from class forms.Form.
-        YES  The searches are done by the database. Do not not load all the elements
-        of a table and implement the search in the views dened in view.py.
-        YES  The errors are properly processed and understandable message errors are
-        returned.
-        NOT YET  The code presents a consistent style and the functions are commented
-        including their author. Note: the author of a function must be unique.
-        CHECK  The style criteria highlighted by Flake8 are applied in a coherent way.
-        Flake8 does not return any error when executed on the code programmed
-        by the student.
-    YES It is impossible to impersonate a user (or participant) without knowing their
-    user name and password (or game.publicId). For example: (a) it is not possible to modify a questionnaire/question/answer without previously doing a
-    login and accessing directly to the corresponding URL, (b) it is not possible to
-    create answers guess without knowing the game.publicId, etc.
-If the following criteria are accomplished, a grade up to 8.9 might be achieved:
-     All the previous criteria are accomplished completely.
-    YES  Every test and all the run checks output success results.
-    WTF HOW  If we reduce the size of the browser window or use the zoom, all the elements
-    in the page are still accessible and no functionality is lost.
-To aim for the maximum grade, the following criteria must be accomplished:
-     All the previous criteria are accomplished completely.
-    YES  The coverage for the files that contain the models, views, and forms is over
-    99%.
-    NO  Sound in pages seen by participants was implemented.
+For the vue.js part of the project:
+1- The first page will show a form asking the
+participant.alias and the game.publicId, and it will call to /api/participant
+to create the new participant
 
-Note: Late submission → take away a point for each late day (or fraction) in the
-submission.
-Note: The code used in the assessment of the assignment will be the one submitted
-to Moodle. Under no circumstance, the existing code in Render.com, Github, or any
-other repository will be used.
+- cambiar ajax de la anterior (participantes)
+- hacer components:
+    . formulario participante (alias y gameID)
+    
 
-----------------------------------------------------------------------------------------------------------------
 
-Summary of the work to be done during the rst half of the assignment
-Create a Django project called kahootclone that includes the applications models
-and services, satisfying the following requirements:
-    YES  The project will include an admin page (Django interface in path http://
-    hostname:8001/admin/) that allows to introduce and remove data. Both the
-    user name and password for admin user must be alumnodb.
-    YES  Data must be persisted in a PostgreSQL database stored in https://neon.
-    tech.
-    YES  The models application will include the data model described in subsection 2.3
-    included in script populate.py.
-    YES  The created code must satisfy the tests dened in models.tests_authentication
-    and models.test_models.
-    YES  The coverage of les models.py must be 100%. The request of 100% coverage
-    applies exclusively to the code you create. Ignore the code created by Django
-    or the one provided by the teachers.
-    YES  The services application will include at least all the services related to the
-    questionnaire (those whose alias starts with questionnarie) and the one needed
-    to create the starting page (alias home) (see section 2.6).
-    YES  The created code must satisfy at least the rst six tests dened in services.test_services.py.
-    YES  All the Python code you write must satisfy the style requirement highlighted
-    by the ake8 utility. This requirement is not extensible to the code generated
-    automatically by Django or the code provided by your teachers.
-    YES The views (views.py) must be implemented using classes.
+2-The second one will show a message to
+the participant telling them that they are waiting until the game starts (Fig 2).
+This page must check the state of the game game.status every 2 seconds calling to
+/api/games, when game.status goes from WAITING to QUESTION it will move to the
+third page
 
-----------------------------------------------------------------------------------------------------------------
+- hacer components:
+    . watingpage
+    . ajax cada 2 segundos comprobando estado
 
-Work to be presented when the assignment ends
-    YES  Make sure your code satises all the provided tests. Unless specied
-    otherwise, it is not acceptable to modify the code in the tests.
-    YES  Implement all the tests you consider necessary to cover the developed functionality. These tests must be implemented in a le called
-    test_additional.py.
-    YES  Include a le called coverage.txt in the project root that contains the result
-    of running the command coverage for all the tests.
-    YES  Deploy and test the application in Render.com in production mode (DEBUG=False, SECRET_KEY and DATABASE_URL in an environment
-    variable).
-    NOT YET  Upload to Moodle the obtained le when running the command zip -r
-    ../assign4_final.zip .git from the root of the project. Remember you
-    have to add and commit the les to git before running that command. If
-    you want to check the content of the zip le is correct, you may do it by
-    running the command: cd ..; unzip assign4_final.zip; git clone
-    . tmpDir; ls tmpDir.
-    YES  Verify the variable ALLOWED_HOSTS from le settings.py included in the
-    submission includes your deployment path in Render.com (if it does not
-    appear, we will grade the assignment as if the project was not deployed in
-    Render.com). In the same way, check in Render.com that your user name
-    and password for admin are alumnodb.
+3- This last page will allow to choose among the four available answers (a number in the [0−3] range) and will send the choice to the server by calling
+to /api/guess. After sending an answer, a message must be received confirming if
+the submission was done successfully or not.
+
+
+- hacer components:
+    .

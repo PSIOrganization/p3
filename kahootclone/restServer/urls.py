@@ -11,7 +11,7 @@ router.register('guess', views.GuessViewSet, 'guess')
 
 
 # En el router vamos agnadiendo los endpoints a los viewsets
-urlpatterns = [  
+urlpatterns = [
     path('', include(router.urls))
 ]
 
