@@ -36,7 +36,7 @@
     	        <div class="row">
                     <div class="col-md-12">
                         <div v-if="error" class="alert alert-danger" role="alert">
-                            Yay
+                            {{ error_message }}
                         </div>
                     </div>
                 </div>
@@ -55,10 +55,12 @@
                     game: '',
                 },
                 error: false,
+                error_message: '',
             }
         },
         props: {
             error: false,
+            error_message: '',
         },
         methods: {
             enviarFormulario() {

@@ -1,7 +1,7 @@
 <template>
   <main>
     <div id="gameForm">
-      <gameForm :error="error" @add-participant="addParticipant"/>
+      <gameForm :error="error" :error_message="error_message" @add-participant="addParticipant"/>
     </div>
   </main>
 </template>
@@ -20,6 +20,7 @@
       return {
         myVar: myVar,
         error: false,
+        error_message: '',
       }
     },
     methods: {
@@ -39,6 +40,7 @@
           this.$router.push({ name: 'waitingGame', params: { gameId: participant.game } });
         } else if (response.status == 403) {
           this.error = true;
+          this.error_message = 'Game not found';
         } else {
           console.log('Error');
           this.error = true;
