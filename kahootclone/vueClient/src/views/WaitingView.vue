@@ -44,8 +44,10 @@
             'Content-Type': 'application/json; charset=UTF-8',
           },
         });
+        const game = await response.json();
         if (response.status == 200) {
-          this.gameState = response.status;
+          console.log(game);
+          this.gameState = game.state;
           // if (game.started) {
           //   this.$router.push({ name: 'game', params: { gameId: this.gameId } });
           // }

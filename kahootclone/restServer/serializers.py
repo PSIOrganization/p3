@@ -12,7 +12,7 @@ class ParticipantSerializer(serializers.ModelSerializer):
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = ['questionnaire', 'created_at', 'publicId']
+        fields = ['questionnaire', 'created_at', 'publicId', 'state']
 
 
 class GuessSerializer(serializers.ModelSerializer):

@@ -70,18 +70,18 @@ class GameViewSet(viewsets.ModelViewSet):
     serializer_class = GameSerializer
     lookup_field = 'publicId'
 
-    def retrieve(self, request, publicId):
-        '''
-        Retrieves a game
-        @return: render if the form is not valid
-        @return: redirect to home page if the form is valid
-        '''
-        game_exists = Game.objects.filter(publicId=publicId).exists()
-        if not game_exists:
-            return Response(status=status.HTTP_403_FORBIDDEN)
-        game = Game.objects.get(publicId=publicId)
-        serializer = GameSerializer(game)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    # def retrieve(self, request, publicId):
+    #     '''
+    #     Retrieves a game
+    #     @return: render if the form is not valid
+    #     @return: redirect to home page if the form is valid
+    #     '''
+    #     game_exists = Game.objects.filter(publicId=publicId).exists()
+    #     if not game_exists:
+    #         return Response(status=status.HTTP_403_FORBIDDEN)
+    #     game = Game.objects.get(publicId=publicId)
+    #     serializer = GameSerializer(game)
+    #     return Response(serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request, publicId):
         # should not update a participant, returns error message:
