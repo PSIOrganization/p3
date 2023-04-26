@@ -344,10 +344,10 @@ class GameUpdateParticipant(View):
             return render(request, 'errors/not_your_game.html', context)
 
         game = Game.objects.get(publicId=request.session['publicid'])
-        faker_name = faker.Faker()
+        # faker_name = faker.Faker()
 
-        random_participant = Participant(game=game, alias=faker_name.word())
-        random_participant.save()
+        # random_participant = Participant(game=game, alias=faker_name.word())
+        # random_participant.save()
         participant_list = Participant.objects.filter(game=game)
         string = ""
         for participant in participant_list:

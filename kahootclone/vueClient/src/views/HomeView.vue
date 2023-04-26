@@ -1,9 +1,49 @@
-<script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
-</script>
-
 <template>
   <main>
-    <TheWelcome />
+    <div id="gameForm">
+      <gameForm :error="error" @add-participant="addParticipant"/>
+    </div>
   </main>
 </template>
+
+<script>
+  import { RouterLink, RouterView } from 'vue-router'
+  import GameForm from '../components/GameForm.vue';
+  const myVar = import.meta.env.VITE_DJANGOURL;
+  export default {
+    components: {
+      RouterLink,
+      RouterView,
+      GameForm,
+    },
+    data() {
+      return {
+        myVar: myVar,
+        error: false,
+      }
+    },
+    methods: {
+      async addParticipant(participant) {
+        console.log(participant);
+        const url = `${this.myVar}participant/`;
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(participant),
+        });
+
+        this.status = response.status;
+        if (response.status == 201) {
+          this.$router.push({ name: 'waitingGame', params: { gameId: participant.game } });
+        } else if (response.status == 403) {
+          this.error = true;
+        } else {
+          console.log('Error');
+          this.error = true;
+        }
+      },
+    },
+  }
+</script>

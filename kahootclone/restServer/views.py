@@ -28,6 +28,10 @@ class ParticipantViewSet(viewsets.ModelViewSet):
         @return: redirect to home page if the form is valid
         '''
         data = request.data
+        game_exists = Game.objects.filter(publicId=data['game']).exists()
+        if not game_exists:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        
         game = Game.objects.get(publicId=data['game'])
         if Participant.objects.filter(game=game, alias=data['alias']).exists():
             return Response(status=status.HTTP_403_FORBIDDEN)
