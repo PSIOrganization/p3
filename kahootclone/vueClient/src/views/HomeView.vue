@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import { RouterLink, RouterView } from 'vue-router'
+  import { RouterLink, RouterView } from 'vue-router';
   import GameForm from '../components/GameForm.vue';
   const myVar = import.meta.env.VITE_DJANGOURL;
   export default {

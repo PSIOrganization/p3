@@ -1,12 +1,11 @@
 <template>
-  <div class="about">
+  <div id="lobby">
     <h1>You're in!</h1>
     <br>
     <h3>Game with pin: {{ gameId }}</h3>
     <br>
-    <h3>Waiting for the game to start...</h3>
+    <h3>{{ message }}</h3>
     <br>
-    <h3>State: {{ gameState }}</h3>
   </div>
 </template>
 
@@ -18,6 +17,7 @@
         myVar: myVar,
         gameId: '',
         gameState: null,
+        message: '',
       }
     },
     created() {
@@ -26,10 +26,9 @@
     mounted() {
       setInterval(this.getGame, 2000);
     },
-    // mounted: {
-    //   // this.getGame();
-    //   // setInterval(this.getGame, 2000);
-    // },
+    beforeUnmount() {
+      clearInterval(this.getGame);
+    },
     methods: {
       // ajax function every 2 seconds to get game
       // if game is started, redirect to game view
@@ -48,9 +47,16 @@
         if (response.status == 200) {
           console.log(game);
           this.gameState = game.state;
-          // if (game.started) {
-          //   this.$router.push({ name: 'game', params: { gameId: this.gameId } });
-          // }
+          if (this.gameState == 1) {
+            this.message = 'Waiting for the game to start...';
+          }
+          else if (this.gameState == 2) {
+            this.message = 'Game will start soon...';
+            
+          } else if (this.gameState == 3) {
+            console.log(game.questionNo)
+            this.$router.push({ name: 'answersQuestion', params: { gameId: this.gameId, questionNo: game.questionNo } });
+          }
         }
       },
     }
@@ -59,7 +65,7 @@
 
 <style>
 @media (min-width: 1024px) {
-  .about {
+  #lobby {
     min-height: 100vh;
     align-items: center;
   }

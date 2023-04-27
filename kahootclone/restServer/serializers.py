@@ -6,13 +6,14 @@ from models.models import Participant, Game, Guess
 class ParticipantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participant
-        fields = ['alias', 'game']
+        fields = ['alias', 'game', 'uuidP']
 
 
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = ['questionnaire', 'created_at', 'publicId', 'state']
+        fields = ['questionnaire', 'created_at', 'publicId', 'state',
+                  'questionNo']
 
 
 class GuessSerializer(serializers.ModelSerializer):

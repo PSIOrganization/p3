@@ -11,7 +11,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import mixins
 
-from models.constants import QUESTION
+from models.constants import QUESTION, ANSWER
 
 
 class ParticipantViewSet(viewsets.ModelViewSet):
@@ -125,8 +125,11 @@ class GuessViewSet(viewsets.ModelViewSet):
             questionnaire=game.questionnaire)
         question = question_list[game.questionNo]
         answer_list = Answer.objects.filter(question=question)
+        if data['answer'] >= len(answer_list):
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+            # change maybe
         answer = answer_list[data['answer']]
-        if game.state != QUESTION:
+        if game.state != ANSWER:
             info_msg = "wait until the question is shown"
             return Response(status=status.HTTP_403_FORBIDDEN,
                             data=info_msg)
