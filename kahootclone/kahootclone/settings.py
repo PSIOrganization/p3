@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'restServer.apps.RestserverConfig',
     'rest_framework',
     'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
