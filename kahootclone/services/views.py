@@ -11,7 +11,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import View, ListView, DetailView
 from django.template import loader
 from models.models import Questionnaire, Question, Answer, Game, Participant
-from models.constants import WAITING, QUESTION, ANSWER, LEADERBOARD
+from models.constants import WAITING, COUNTDOWN, QUESTION, ANSWER, LEADERBOARD
 import faker
 
 
@@ -371,11 +371,11 @@ class GameCountdown(View):
         current_game = Game.objects.get(publicId=request.session['publicid'])
         current_state = current_game.get_state()
         if current_state == WAITING:
-            request.session['game_state'] = QUESTION
-            current_game.set_state(QUESTION)
+            request.session['game_state'] = COUNTDOWN
+            current_game.set_state(COUNTDOWN)
             current_game.save()
             return render(request, 'game/countdown.html')
-        elif current_state == QUESTION:
+        elif current_state == COUNTDOWN or current_state == ANSWER:
             question_list = Question.objects.filter(
                 questionnaire=current_game.questionnaire)
             current_question = question_list[current_game.questionNo]
@@ -385,11 +385,11 @@ class GameCountdown(View):
             context['question'] = current_question
             context['answer_list'] = answer_list
 
-            request.session['game_state'] = ANSWER
-            current_game.set_state(ANSWER)
+            request.session['game_state'] = QUESTION
+            current_game.set_state(QUESTION)
             current_game.save()
             return render(request, 'game/question.html', context)
-        elif current_state == ANSWER:
+        elif current_state == QUESTION:
             question_list = Question.objects.filter(
                 questionnaire=current_game.questionnaire)
             current_question = question_list[current_game.questionNo]
@@ -405,8 +405,8 @@ class GameCountdown(View):
                 current_game.save()
                 context['final'] = True
                 return render(request, 'game/answer.html', context)
-            request.session['game_state'] = QUESTION
-            current_game.set_state(QUESTION)
+            request.session['game_state'] = ANSWER
+            current_game.set_state(ANSWER)
             current_game.bump_question()
             current_game.save()
             return render(request, 'game/answer.html', context)

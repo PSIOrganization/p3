@@ -129,7 +129,7 @@ class GuessViewSet(viewsets.ModelViewSet):
             return Response(status=status.HTTP_400_BAD_REQUEST)
             # change maybe
         answer = answer_list[data['answer']]
-        if game.state != ANSWER:
+        if game.state != QUESTION:
             info_msg = "wait until the question is shown"
             return Response(status=status.HTTP_403_FORBIDDEN,
                             data=info_msg)

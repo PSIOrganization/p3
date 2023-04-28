@@ -4,6 +4,7 @@ Defines the different game status
 '''
 
 WAITING = 1
-QUESTION = 2
-ANSWER = 3
-LEADERBOARD = 4
+COUNTDOWN = 2
+QUESTION = 3
+ANSWER = 4
+LEADERBOARD = 5

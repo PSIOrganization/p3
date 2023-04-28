@@ -128,9 +128,10 @@ class Game(models.Model):
 
     class State(models.IntegerChoices):
         WAITING = 1
-        QUESTION = 2
-        ANSWER = 3
-        LEADERBOARD = 4
+        COUNTDOWN = 2
+        QUESTION = 3
+        ANSWER = 4
+        LEADERBOARD = 5
 
     state = models.IntegerField(choices=State.choices, default=State.WAITING)
     publicId = models.IntegerField(unique=True)

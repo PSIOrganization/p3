@@ -2,7 +2,7 @@
 
 from django.urls import reverse
 from time import sleep
-from models.constants import QUESTION, ANSWER, LEADERBOARD
+from models.constants import COUNTDOWN, QUESTION, ANSWER, LEADERBOARD
 from .test_services import ServiceBaseTest
 
 ###################
@@ -166,6 +166,10 @@ class ServiceTests2(ServiceBaseTest):
 
         self.client1.get(reverse(GAME_QUESTION_SERVICE), follow=True)
         session = self.client1.session
+        self.assertEqual(session[SESSION_STATE], COUNTDOWN)
+
+        self.client1.get(reverse(GAME_QUESTION_SERVICE), follow=True)
+        session = self.client1.session
         self.assertEqual(session[SESSION_STATE], QUESTION)
 
         self.client1.get(reverse(GAME_ANSWER_SERVICE), follow=True)
@@ -175,10 +179,6 @@ class ServiceTests2(ServiceBaseTest):
         self.client1.get(reverse(GAME_QUESTION_SERVICE), follow=True)
         session = self.client1.session
         self.assertEqual(session[SESSION_STATE], QUESTION)
-
-        self.client1.get(reverse(GAME_ANSWER_SERVICE), follow=True)
-        session = self.client1.session
-        self.assertEqual(session[SESSION_STATE], ANSWER)
 
         self.client1.get(reverse(GAME_QUESTION_SERVICE), follow=True)
         session = self.client1.session
