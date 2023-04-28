@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,9 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+load_dotenv()
 
 if 'TESTING' in os.environ:
-    SECRET_KEY = 'django-insecure-7u$ha(4f3bpru)v8i+0qjgtm^zoz@50+9b#kzof+%^lq^&(9)m'
+    SECRET_KEY = os.getenv('SECRET_KEY_PROD')
     DEBUG = 'DEBUG' in os.environ  # Only set to True if DEBUG is set
     ALLOWED_HOSTS = ['127.0.0.1', 'https://p3-kahoot-elena-manu.onrender.com']
     # first host is for local testing, second is for Render deployment
