@@ -190,7 +190,7 @@ class Participant(models.Model):
     uuidP = models.UUIDField(default=uuid.uuid4)
 
     class Meta:
-        ordering = ['points']
+        ordering = ['-points']
 
     def __str__(self):
         '''
