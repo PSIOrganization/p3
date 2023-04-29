@@ -44,9 +44,10 @@
           this.$store.commit('store_participant', {uuidp: participant_response.uuidP});
           this.$router.push({ name: 'waitingGame', params: { gameId: participant.game } });
         } else if (response.status == 403) {
+          const error_response = await response.json();
           console.log('Error')
           this.error = true;
-          this.error_message = 'Game not found';
+          this.error_message = error_response;
         } else {
           console.log('Error');
           this.error = true;

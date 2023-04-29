@@ -32,7 +32,9 @@
     <p>That's the end!</p>
 {% else %}
     <h3>Current leaderboard</h3>
-    <p>Not implemented</p>
+    <p>1st -> {{ leaderboard.first }}</p>
+    <p>2nd -> {{ leaderboard.second }}</p>
+    <p>3rd -> {{ leaderboard.third }}</p>
 {% endif %}
 <p id="countdown"></p>
 

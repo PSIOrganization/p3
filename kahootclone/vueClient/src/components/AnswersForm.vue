@@ -1,20 +1,22 @@
 <template>
     <div id="formulario-persona">
-        <h3>Question number _____ [poner]</h3>
-        <form @submit.prevent="enviarFormulario">
-            <div class="row2" v-for="answer in answers" :key="answer.value">
-                <button type="submit" @click="enviarFormulario(answer.value)">{{ answer.text }}</button>
-            </div>
-            <div class="container">
-    	        <div class="row">
-                    <div class="col-md-12">
-                        <div v-if="error" class="alert alert-danger" role="alert">
-                            {{ error_message }}
-                        </div>
+        <div class="row2" v-for="answer in answers" :key="answer.value">
+            <form @submit.prevent="enviarFormulario(answer.value)">
+                <button class="btn btn-primary">{{ answer.text }}</button>
+            </form>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div v-if="error" class="alert alert-danger" role="alert">
+                        {{ error_message }}
+                    </div>
+                    <div v-if="info">
+                        {{ info_message }}
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -41,14 +43,13 @@
                         text: '4'
                     },
                 ],
-                answerNo: '',
-                error: false,
-                error_message: '',
             }
         },
         props: {
             error: false,
             error_message: '',
+            info: false,
+            info_message: '',
         },
         methods: {
             enviarFormulario(answerNo) {
@@ -57,18 +58,11 @@
 
                 // this.form_value = event.target.value;
                 // // // console.log("Funcional")
-                // this.$emit('add-guess', answerNo);
+                this.$emit('add-guess', answerNo);
                 // // this.$refs.nombre.focus();
                 // // Restablecemos el valor de la variables
-                // this.participant = {
-                //     alias: '',
-                //     game: '',
-                // }
-                console.log(answerNo);
+                // console.log(answerNo);
             },
-            resetEstado() {
-                this.error = false;
-            }
         },
     }
 </script>

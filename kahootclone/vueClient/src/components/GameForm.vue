@@ -54,17 +54,15 @@
                     alias: '',
                     game: '',
                 },
-                error: false,
-                error_message: '',
             }
         },
         props: {
-            error: false,
+            error: undefined,
             error_message: '',
         },
         methods: {
             enviarFormulario() {
-                this.resetEstado();
+                // this.resetEstado();
                 // // Comprobamos la presencia de errores
 
                 // // console.log("Funcional")

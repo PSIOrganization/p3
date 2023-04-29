@@ -395,9 +395,26 @@ class GameCountdown(View):
             current_question = question_list[current_game.questionNo]
             correct_answer = Answer.objects.get(question=current_question,
                                                 correct=True)
+            
+            participant_list = Participant.objects.filter(game=current_game)
+            first_place = None
+            second_place = None
+            third_place = None
+            if participant_list.count() >= 1:
+                first_place = participant_list[0]
+            if participant_list.count() >= 2:
+                second_place = participant_list[1]
+            if participant_list.count() >= 3:
+                third_place = participant_list[2]
+
             context = dict()
             context['question'] = current_question
             context['correct_answer'] = correct_answer
+            context['leaderboard'] = {
+                'first': first_place,
+                'second': second_place,
+                'third': third_place
+            }
 
             if question_list.count() == current_game.questionNo + 1:
                 request.session['game_state'] = LEADERBOARD
@@ -411,4 +428,22 @@ class GameCountdown(View):
             current_game.save()
             return render(request, 'game/answer.html', context)
         elif current_state == LEADERBOARD:
-            return render(request, 'game/leaderboard.html')
+            participant_list = Participant.objects.filter(game=current_game)
+            first_place = None
+            second_place = None
+            third_place = None
+            if participant_list.count() >= 1:
+                first_place = participant_list[0]
+            if participant_list.count() >= 2:
+                second_place = participant_list[1]
+            if participant_list.count() >= 3:
+                third_place = participant_list[2]
+
+            context = dict()
+            context['leaderboard'] = {
+                'first': first_place,
+                'second': second_place,
+                'third': third_place
+            }
+
+            return render(request, 'game/leaderboard.html', context)

@@ -189,6 +189,9 @@ class Participant(models.Model):
     points = models.IntegerField(default=0)
     uuidP = models.UUIDField(default=uuid.uuid4)
 
+    class Meta:
+        ordering = ['points']
+
     def __str__(self):
         '''
         Convert Participant info to string

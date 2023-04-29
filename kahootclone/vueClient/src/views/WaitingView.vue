@@ -18,17 +18,21 @@
         gameId: '',
         gameState: null,
         message: '',
+        myInterval: null,
       }
     },
     created() {
       this.gameId = this.$route.params.gameId;
     },
     mounted() {
-      setInterval(this.getGame, 2000);
+      this.myInterval = setInterval(this.getGame, 500);
     },
     beforeUnmount() {
-      clearInterval(this.getGame);
+      clearInterval(this.myInterval);
     },
+    // beforeRouteLeave() {
+    //   clearInterval(this.myInterval);
+    // },
     methods: {
       // ajax function every 2 seconds to get game
       // if game is started, redirect to game view
@@ -36,7 +40,7 @@
       // if game is not found, redirect to home view
       async getGame() {
         const url = `${this.myVar}games/${this.gameId}/`;
-        // console.log(url)
+        console.log(url)
         // console.log(this.$store.state.uuidp) lo tenemos
         const response = await fetch(url, {
           method: 'GET',
