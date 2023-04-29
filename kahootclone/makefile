@@ -5,7 +5,7 @@ populate:
 	python3 ./manage.py populate
 
 runserver: 
-	python3 manage.py runserver 8001
+	python3 manage.py runserver 8003
 
 update_models:
 	python3 manage.py makemigrations

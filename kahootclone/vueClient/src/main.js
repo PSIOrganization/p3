@@ -8,14 +8,13 @@ import './assets/main.css'
 const app = createApp(App)
 
 const store = createStore({
-    state(){
-        return{
-            uuidp: ''
-        }
+    state: {
+        uuidp: undefined,
     },
     mutations: {
-        storeparticipant(state, {uuidp}){
-            state.uuidp = uuidp
+        store_participant(state, payload){
+            console.log(payload)
+            state.uuidp = payload.uuidp
         }
     }
 })

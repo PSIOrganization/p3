@@ -36,7 +36,8 @@
       // if game is not found, redirect to home view
       async getGame() {
         const url = `${this.myVar}games/${this.gameId}/`;
-        console.log(url)
+        // console.log(url)
+        // console.log(this.$store.state.uuidp) lo tenemos
         const response = await fetch(url, {
           method: 'GET',
           headers: {
@@ -45,7 +46,7 @@
         });
         const game = await response.json();
         if (response.status == 200) {
-          console.log(game);
+          // console.log(game);
           this.gameState = game.state;
           if (this.gameState == 1) {
             this.message = 'Waiting for the game to start...';
@@ -54,8 +55,8 @@
             this.message = 'Game will start soon...';
             
           } else if (this.gameState == 3) {
-            console.log(game.questionNo)
-            this.$router.push({ name: 'answersQuestion', params: { gameId: this.gameId, questionNo: game.questionNo } });
+            // console.log(game.questionNo)
+            this.$router.push({ name: 'answersQuestion', params: { gameId: this.gameId } });
           }
         }
       },

@@ -23,10 +23,6 @@
         name: 'game-form',
         data() {
             return {
-                participant: {
-                    alias: '',
-                    game: '',
-                },
                 answers: [
                     {
                         value: 0,

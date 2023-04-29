@@ -1,8 +1,8 @@
 <template>
-    <div id="answersForm">
-        <answersForm @add-guess="addGuess"/>
-    </div>
-  </template>
+  <div id="answersForm">
+      <answersForm @add-guess="addGuess"/>
+  </div>
+</template>
   
   <script>
     import AnswersForm from '../components/AnswersForm.vue';

@@ -18,7 +18,7 @@ const router = createRouter({
       component: () => import('../views/WaitingView.vue')
     },
     {
-      path: '/game/:gameId/:questionNo',
+      path: '/game/:gameId/start',
       name: 'answersQuestion',
       component: () => import('../views/AnswersView.vue')
     },
