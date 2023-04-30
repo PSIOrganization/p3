@@ -181,6 +181,7 @@ DATABASES['default'].update(db_from_env)
 # Update the default database with the new settings
 
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = [  # this needs to change
+CORS_ORIGIN_WHITELIST = [  
     'http://localhost:3000',
+    'https://p4-kahoot-elena-manu.onrender.com',
 ]
