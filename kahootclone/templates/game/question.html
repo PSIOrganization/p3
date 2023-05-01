@@ -26,9 +26,14 @@
 
 <h1>Game</h1>
 <div class="question">{{ question.question }}</div>
-{% for answer in answer_list %}
-    <p>-> {{ answer.answer }}</p>
+<div class="cardspace">
+    {% for answer in answer_list %}
+    <div class="card card-{{ forloop.counter }}">
+            <p>{{ answer.answer }}</p>
+    </div>
 {% endfor %}
+</div>
+
 <p id="countdown"></p>
 
 
