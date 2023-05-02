@@ -1,8 +1,9 @@
 <template>
-  <div id="formulario-persona">
+  <div class="answersform">
+    <div id="formulario-persona">
     <div class="row2" v-for="answer in answers" :key="answer.value">
       <form @submit.prevent="enviarFormulario(answer.value)">
-        <button class="btn btn-primary">{{ answer.text }}</button>
+          <button class="ansbut ansbut-{{ forloop.counter }}">{{ answer.text }}</button>
       </form>
     </div>
     <div class="container">
@@ -18,6 +19,8 @@
       </div>
     </div>
   </div>
+  </div>
+ 
 </template>
 
 <script>
@@ -79,8 +82,6 @@ export default {
 };
 </script>
 
-<style scoped>
-form {
-  margin-bottom: 2rem;
-}
+<style scoped src="../assets/answersform.css">
+/*@import '../assets/answersform.css' */
 </style>

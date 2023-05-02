@@ -1,5 +1,5 @@
 <template>
-  <main>
+    <main>
     <div id="gameForm">
       <gameForm
         :error="error"
@@ -7,7 +7,8 @@
         @add-participant="addParticipant"
       />
     </div>
-  </main>
+    </main>
+  
 </template>
 
 <script>
@@ -62,3 +63,4 @@ export default {
   },
 };
 </script>
+

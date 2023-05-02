@@ -1,0 +1,53 @@
+.answersform{
+    background: #009087;
+    width: 100vw;
+    height: 100vh;
+    padding: 15%;
+    color: rgba(3, 21, 58, 0.987);
+    font-size: 2em;
+}
+
+
+.ansbut{
+    color:rgba(0, 0, 0, 0.987);
+    text-decoration: none;
+    width: 30%;
+    font-size: 2em;
+    margin: 0;
+  }
+  
+.ansbut-1{
+    background-color: #196e0d;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: auto;
+    height: auto;
+}
+
+.ansbut-2{
+    background-color: #ac0505;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: auto;
+    height: auto;
+}
+
+.ansbut-3{
+    background-color: #6d008f;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: auto;
+    height: auto;  
+}
+
+.ansbut-4 {
+    background-color: #003cff;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: auto;
+    height: auto;
+}

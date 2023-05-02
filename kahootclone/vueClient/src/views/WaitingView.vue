@@ -1,5 +1,5 @@
 <template>
-  <div id="lobby">
+  <div class="lobby">
     <h1>You're in!</h1>
     <br />
     <h3>Game with pin: {{ gameId }}</h3>
@@ -69,11 +69,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped src="../assets/waiting.css">
 @media (min-width: 1024px) {
-  #lobby {
-    min-height: 100vh;
-    align-items: center;
-  }
+  
 }
 </style>

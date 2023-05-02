@@ -1,5 +1,6 @@
 <template>
-  <div id="formulario-persona">
+  <div class="gameform">
+    <div id="formulario-persona">
     <h3>Join a Game!</h3>
     <form @submit.prevent="enviarFormulario">
       <div class="container">
@@ -20,7 +21,7 @@
         <div class="row">
           <div class="col-md-4">
             <div class="form-group">
-              <button class="btn btn-primary">Join</button>
+              <button class="joinbutton">Join</button>
             </div>
           </div>
         </div>
@@ -36,6 +37,8 @@
       </div>
     </form>
   </div>
+  </div>
+  
 </template>
 
 <script>
@@ -77,8 +80,6 @@ export default {
 };
 </script>
 
-<style scoped>
-form {
-  margin-bottom: 2rem;
-}
+<style scoped src="../assets/gameform.css">
+/*@import '../assets/waiting.css' */
 </style>

@@ -1,0 +1,21 @@
+.gameform{
+    background: #009087;
+    width: 100vw;
+    height: 100vh;
+    padding: 15%;
+    color: rgba(3, 21, 58, 0.987);
+    font-size: 2em;
+}
+
+.form-group{
+    padding: 10%;
+    font-size: 1em;
+    color: white;
+    
+}
+
+.joinbutton{
+    border-radius: 15px;
+    padding:20px;
+    color: rgba(3, 21, 58, 0.987);
+}
