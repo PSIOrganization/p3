@@ -22,12 +22,10 @@
         }
     }, 1000);
 </script>
-
-<h1>Game</h1>
-
-<h3>Final leaderboard</h3>
-<p>1st -> {{ leaderboard.first }}</p>
-<p>2nd -> {{ leaderboard.second }}</p>
-<p>3rd -> {{ leaderboard.third }}</p>
-
+<div class="startgame">
+    <h1>Final leaderboard</h1>
+    <p>1st place: {{ leaderboard.first }}</p>
+    <p>2nd place: {{ leaderboard.second }}</p>
+    <p>3rd place: {{ leaderboard.third }}</p>
+</div>
 {% endblock %}

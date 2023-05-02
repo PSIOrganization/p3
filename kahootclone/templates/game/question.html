@@ -24,17 +24,21 @@
     }, 1000);
 </script>
 
-<h1>Game</h1>
-<div class="question">{{ question.question }}</div>
-<div class="cardspace">
-    {% for answer in answer_list %}
-    <div class="card card-{{ forloop.counter }}">
-            <p>{{ answer.answer }}</p>
-    </div>
-{% endfor %}
+<div class="startgame">
+    <h1>Game</h1>
 </div>
-
+    <div class="question"><p>{{ question.question }}</p></div>
+    <div class="cardspace">
+        {% for answer in answer_list %}
+        <div class="card card-{{ forloop.counter }}">
+                <p>{{ answer.answer }}</p>
+        </div>
+{% endfor %}
+    </div>
+<div class="countdown">
+<p>Seconds left: </p>
 <p id="countdown"></p>
+</div>
 
 
 {% endblock %}

@@ -23,19 +23,28 @@
         }
     }, 1000);
 </script>
+<div class="startgame">
+    <h1>Game</h1>
+    <div class="question">
+        <p>{{ question.question }}</p>
+        <p>Correct answer is: {{ correct_answer.answer }}</p>
+    </div> 
+    <hr>
+</div>
 
-<h1>Game</h1>
-<h3>{{ question.question }}</h3>
-<p>Correct answer is: {{ correct_answer.answer }}</p>
-<hr>
-{% if final %}
+<div class="startgame">
+    {% if final %}
     <p>That's the end!</p>
-{% else %}
-    <h3>Current leaderboard</h3>
-    <p>1st -> {{ leaderboard.first }}</p>
-    <p>2nd -> {{ leaderboard.second }}</p>
-    <p>3rd -> {{ leaderboard.third }}</p>
-{% endif %}
-<p id="countdown"></p>
+    {% else %}
+        <h1>Current leaderboard</h1>
+        <p>1st place: {{ leaderboard.first }}</p>
+        <p>2nd place: {{ leaderboard.second }}</p>
+        <p>3rd place: {{ leaderboard.third }}</p>
+    {% endif %}
+</div>
 
+<div class="countdown">
+    <p>Seconds left: </p>
+    <p id="countdown"></p>
+</div>
 {% endblock %}
