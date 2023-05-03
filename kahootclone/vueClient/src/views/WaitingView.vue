@@ -71,6 +71,5 @@ export default {
 
 <style scoped src="../assets/waiting.css">
 @media (min-width: 1024px) {
-  
 }
 </style>

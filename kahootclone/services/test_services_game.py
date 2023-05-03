@@ -160,6 +160,9 @@ class ServiceTests2(ServiceBaseTest):
         args = [str(id)]
         self.checkLogin(GAME_CREATE_SERVICE, 'DO_NOT_CHECK_KEY', args=args)
         game = Game.objects.first()
+        Participant.objects.create(game=game, alias="alias_1")
+        Participant.objects.create(game=game, alias="alias_2")
+        Participant.objects.create(game=game, alias="alias_3")
         self.assertEqual(game.state, WAITING)
         session = self.client1.session
         self.assertEqual(session[SESSION_STATE], WAITING)
@@ -172,9 +175,18 @@ class ServiceTests2(ServiceBaseTest):
         session = self.client1.session
         self.assertEqual(session[SESSION_STATE], QUESTION)
 
-        self.client1.get(reverse(GAME_ANSWER_SERVICE), follow=True)
+        response = self.client1.get(reverse(GAME_ANSWER_SERVICE), follow=True)
         session = self.client1.session
         self.assertEqual(session[SESSION_STATE], ANSWER)
+        self.assertNotEqual(
+             self.decode(
+                 response.content).find("alias_1"), -1)
+        self.assertNotEqual(
+             self.decode(
+                 response.content).find("alias_2"), -1)
+        self.assertNotEqual(
+             self.decode(
+                 response.content).find("alias_3"), -1)
 
         self.client1.get(reverse(GAME_QUESTION_SERVICE), follow=True)
         session = self.client1.session
@@ -190,3 +202,12 @@ class ServiceTests2(ServiceBaseTest):
         self.assertNotEqual(
              self.decode(
                  response.content).find("Final leaderboard"), -1)
+        self.assertNotEqual(
+             self.decode(
+                 response.content).find("alias_1"), -1)
+        self.assertNotEqual(
+             self.decode(
+                 response.content).find("alias_2"), -1)
+        self.assertNotEqual(
+             self.decode(
+                 response.content).find("alias_3"), -1)

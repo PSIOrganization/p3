@@ -33,7 +33,7 @@ class ParticipantViewSet(viewsets.ModelViewSet):
             error_message = "Game does not exist"
             return Response(error_message,
                             status=status.HTTP_403_FORBIDDEN)
-        
+
         game = Game.objects.get(publicId=data['game'])
         if Participant.objects.filter(game=game, alias=data['alias']).exists():
             error_message = "There is a participant with this alias already"

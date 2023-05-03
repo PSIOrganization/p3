@@ -1,44 +1,43 @@
 <template>
   <div class="gameform">
     <div id="formulario-persona">
-    <h3>Join a Game!</h3>
-    <form @submit.prevent="enviarFormulario">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Alias </label>
-              <input ref="alias" v-model="participant.alias" type="text" />
+      <h3>Join a Game!</h3>
+      <form @submit.prevent="enviarFormulario">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Alias </label>
+                <input ref="alias" v-model="participant.alias" type="text" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Game ID </label>
+                <input v-model="participant.game" type="text" />
+              </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Game ID </label>
-              <input v-model="participant.game" type="text" />
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <button class="joinbutton">Join</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div v-if="error" class="alert alert-danger" role="alert">
-              {{ error_message }}
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <button class="joinbutton">Join</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </form>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div v-if="error" class="alert alert-danger" role="alert">
+                {{ error_message }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-  </div>
-  
 </template>
 
 <script>
