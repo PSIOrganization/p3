@@ -1,0 +1,11 @@
+Name                        Stmts   Miss  Cover   Missing
+---------------------------------------------------------
+restServer/__init__.py          0      0   100%
+restServer/admin.py             1      0   100%
+restServer/apps.py              4      0   100%
+restServer/models.py            1      0   100%
+restServer/serializers.py      14      0   100%
+restServer/urls.py              8      0   100%
+restServer/views.py            84      0   100%
+---------------------------------------------------------
+TOTAL                         112      0   100%
