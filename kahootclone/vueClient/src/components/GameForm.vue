@@ -4,27 +4,23 @@
       <h3>Join a Game!</h3>
       <form @submit.prevent="enviarFormulario">
         <div class="container">
-          <div class="row">
+          
             <div class="col-md-4">
               <div class="form-group">
                 <label>Alias </label>
                 <input ref="alias" v-model="participant.alias" type="text" />
               </div>
             </div>
+            
             <div class="col-md-4">
               <div class="form-group">
                 <label>Game ID </label>
                 <input v-model="participant.game" type="text" />
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
               <div class="form-group">
                 <button class="joinbutton">Join</button>
               </div>
-            </div>
-          </div>
         </div>
         <div class="container">
           <div class="row">

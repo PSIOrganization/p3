@@ -1,18 +1,23 @@
 .answersview{
     background: #009087;
     color: rgba(3, 21, 58, 0.987);
-    margin-left: -20em;
-    width: 100vw;
+    font-size: 2rem;
+    margin-left: -12.5rem;
+    width: 100rem;
     height: auto;
+    overflow: scroll;
+    justify-content: center;
     text-align: center;
+   
 }
 
 .homebutton{
-    font-size: 3em;
+    font-size: 3rem;
+    margin-bottom: 2rem;
 
 }
 
 h1{
-    margin-top: 1em;
+    margin-top: 2rem;
     color: rgba(3, 21, 58, 0.987);
 }

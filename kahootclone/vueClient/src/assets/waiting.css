@@ -1,9 +1,10 @@
 .lobby{
     background: #009087;
-    width: 100.25vw;
-    height: 100vh;
-    margin-left: -10em;
-    padding: 15%;
     color: white;
-    font-size: 2em;
+    font-size: 2rem;
+    margin-left: -12.5rem;
+    width: 100rem;
+    height: auto;
+    overflow: scroll;
+    padding: 15%;
 }

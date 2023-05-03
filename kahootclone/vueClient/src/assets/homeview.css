@@ -1,7 +1,9 @@
 .homeview{
     background: #009087;
     color: rgba(3, 21, 58, 0.987);
-    font-size: 2em;
-    margin-left: -10em;
-    width: 100.25vw;
+    font-size: 2rem;
+    margin-left: -12.5rem;
+    width: 100rem;
+    height: auto;
+    overflow: scroll;
 }

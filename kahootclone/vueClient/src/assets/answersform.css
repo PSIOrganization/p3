@@ -3,11 +3,12 @@
     padding:15%;
     color: rgba(3, 21, 58, 0.987);
     font-size: 2em;
+    overflow: scroll;
 }
 
 
 .botones{
-    margin-left: 10em;
+    justify-content: space-evenly;
     display: flex;
     flex-wrap: wrap;
   }
@@ -16,8 +17,8 @@
     color:rgba(0, 0, 0, 0.987);
     background-color: #196e0d;
     border: 3px solid #ccc;
-    width: 5em;
-    height: 5em;
+    width: 10rem;
+    height: 10rem;
 }
 
 .answer2{
@@ -26,8 +27,8 @@
     background-color: #ac0505;
     border: 3px solid #ccc;
     padding: 10px;
-    width: 5em;
-    height: 5em;
+    width: 10rem;
+    height: 10rem;
 }
 
 .answer3{
@@ -36,8 +37,8 @@
     background-color: #6d008f;
     border: 3px solid #ccc;
     padding: 10px;
-    width: 5em;
-    height: 5em;
+    width: 10rem;
+    height: 10rem;
 }
 
 .answer4 {
@@ -46,6 +47,6 @@
     background-color: #003cff;
     border: 3px solid #ccc;
     padding: 10px;
-    width: 5em;
-    height: 5em;
+    width: 10rem;
+    height: 10rem;
 }
