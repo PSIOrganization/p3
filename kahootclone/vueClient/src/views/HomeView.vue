@@ -1,16 +1,15 @@
 <template>
-<div class="homeview">
-  <main>
-    <div id="gameForm">
-      <gameForm
-        :error="error"
-        :error_message="error_message"
-        @add-participant="addParticipant"
-      />
-    </div>
-  </main>
-</div>
- 
+  <div class="homeview">
+    <main>
+      <div id="gameForm">
+        <gameForm
+          :error="error"
+          :error_message="error_message"
+          @add-participant="addParticipant"
+        />
+      </div>
+    </main>
+  </div>
 </template>
 
 <script>

@@ -33,7 +33,7 @@ Evaluation criteria
 To pass with 5 points it is necessary to satisfy the following criteria completely:
 YES    • It is possible to create a questionnaire and play with it locally. The score of
 the participants is shown after every question.
-    • The file uploaded to Moodle includes a git repository.
+TODO    • The file uploaded to Moodle includes a git repository.
 YES    • The code has been stored in a git repository accesible to all the members of
 the work pair and this repository is private.
 YES    • When running the tests, the number of fails is not larger than ten, and the
@@ -45,7 +45,7 @@ YES    • When running the tests in local, the number of fails is not larger th
 YES    • It is not possible to create/delete/edit questionnaires/questions/answers for
     users NOT connected (“logged”) even when accessing directly to the associated
     URLs with the different services.
-CHECK    • It is not possible to join games, or create results (guess) for participants without knowing the publicId of a game, 
+YES    • It is not possible to join games, or create results (guess) for participants without knowing the publicId of a game, 
     even when directly accessing the associated URLs with the different services.
 If the following criteria are accomplished, a grade up to 6.9 might be achieved:
     • All the previous criteria are accomplished completely.
@@ -69,14 +69,14 @@ CHECK    • The web application has a user interface that is user friendly and 
     provided in render.com.
 If the following criteria are accomplished, a grade up to 8.9 might be achieved:
     • All the previous criteria are accomplished completely.
-NO    • The code is readable, efficient, well-structured, and commented.
+ALMOST    • The code is readable, efficient, well-structured, and commented.
 YES    • The tools provided by the framework are used.
     • The following are examples of the previous points:
 YES        – The queries are done by the database. That is, the methods in views.py
         do not retrieve all elements of a table (i.e. ClassName.objects.all())
         and the search is done by the functions defined en views.py (for object
         in class: if object.name==’Pedro’: ...).
-CHECK        – The errors are properly processed and understandable message errors are
+I THINK SO        – The errors are properly processed and understandable message errors are
         returned.
         – The web application properly manages accesses to non existing pages or
         with inadequate permissions.
@@ -90,14 +90,14 @@ I THINK        – The files created with Vue.js must satisfy the criteria highl
 NO    • The user manual is included and appropriate.
 YES    • When running the tests, the number of fails is not larger than two and the
     code that satisfies them is functional.
-CHECK    • If we reduce the size of the browser window or use the zoom, all the elements
+NO    • If we reduce the size of the browser window or use the zoom, all the elements
     in the page are still accessible and no functionality is lost.
 If the following criteria are accomplished, a grade up to 10 might be achieved
     • All the previous criteria are accomplished completely.
-CHECK    • The application is robust and responds adequately even if invalid parameters
+YES   • The application is robust and responds adequately even if invalid parameters
     are provided.
 YES    • All the tests provide satisfactory results.
-NO    • The coverage for the Django files that contain the models, views, and forms is
+YES    • The coverage for the Django files that contain the models, views, and forms is
     over 99%. If the proposed tests do not generate the necessary coverage, create
     a new file called tests additional.py and add the necessary tests in it.
 Note: Late final submission → take away a point for each late day (or fraction) in

@@ -11,7 +11,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import mixins
 
-from models.constants import QUESTION, ANSWER
+from models.constants import QUESTION, ANSWER, LEADERBOARD
 
 
 class ParticipantViewSet(viewsets.ModelViewSet):
@@ -124,29 +124,46 @@ class GuessViewSet(viewsets.ModelViewSet):
         '''
         data = request.data
         print(data)
+
+        # check if participant uuidp exists
+        if data['uuidp'] == "":
+            error_msg = "Something went wrong, " \
+                        "you are not registered in this game!"
+            return Response(error_msg,
+                            status=status.HTTP_400_BAD_REQUEST)
+
         game = Game.objects.get(publicId=data['game'])
+
+        if game.state != QUESTION:
+            if game.state == LEADERBOARD:
+                error_msg = "You can't answer anymore, " \
+                            "the game is over!"
+            else:
+                error_msg = "You can't answer yet, " \
+                            "wait until the question is shown!"
+            return Response(error_msg,
+                            status=status.HTTP_403_FORBIDDEN)
+
         participant = Participant.objects.get(uuidP=data['uuidp'])
         question_list = Question.objects.filter(
             questionnaire=game.questionnaire)
         question = question_list[game.questionNo]
-        answer_list = Answer.objects.filter(question=question)
-        if data['answer'] >= len(answer_list):
-            error_msg = "Answer does not exist"
-            return Response(error_msg,
-                            status=status.HTTP_403_FORBIDDEN)
-            # change maybe
-        answer = answer_list[data['answer']]
-        if game.state != QUESTION:
-            error_msg = "You can't answer yet, " \
-                        "wait until the question is shown!"
-            return Response(error_msg,
-                            status=status.HTTP_403_FORBIDDEN)
 
         if Guess.objects.filter(question=question,
                                 participant=participant).exists():
             error_msg = "You already answered this question!"
             return Response(error_msg,
                             status=status.HTTP_403_FORBIDDEN)
+
+        answer_list = Answer.objects.filter(question=question)
+
+        if data['answer'] >= len(answer_list):
+            error_msg = "Answer does not exist"
+            return Response(error_msg,
+                            status=status.HTTP_403_FORBIDDEN)
+            # change maybe
+        answer = answer_list[data['answer']]
+
         new_guess = Guess(game=game, participant=participant,
                           question=question, answer=answer)
         new_guess.save()

@@ -19,3 +19,9 @@ shell:
 
 clean:
 	rm -rf __pycache__
+
+activate:
+	source ../../p3_env/bin/activate
+
+restart_db:
+	sudo service postgresql restart

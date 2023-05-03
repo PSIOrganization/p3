@@ -4,7 +4,7 @@ from models.models import (Game, Guess, Participant,
                            User, Questionnaire, Question, Answer)
 from rest_framework.reverse import reverse
 import json
-from models.constants import QUESTION
+from models.constants import QUESTION, LEADERBOARD
 ###################
 # You may modify the following variables
     # default API names
@@ -136,7 +136,7 @@ class RestTests(APITestCase):
         return txt.decode("utf-8")
 
     # ==== participant ====
-    def test021_additional(self):
+    def test_participant_additional(self):
         "add participant"
         url = reverse(PARTICIPANT_LIST)
         data = {'game': 666,  # does not exist
@@ -145,14 +145,31 @@ class RestTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     # ==== GUESS ===
-    def test_031_additional(self):
+    def test_guess_additional(self):
         " add a guess additional functionality"
+        # print("this")
         url = reverse(GUESS_LIST)
         self.game.questionNo = self.game.questionNo + 1
+        self.game.state = QUESTION
         self.game.save()
         data = {'uuidp': self.participant.uuidP,
                 'game': self.gameDict['publicId'],
                 'answer': 3,
                 }
         response = self.client.post(path=url, data=data, format='json')
+        # print(response.data)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.game.state = LEADERBOARD
+        self.game.save()
+        response = self.client.post(path=url, data=data, format='json')
+        # print(response.data)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        data2 = {'uuidp': '',
+                 'game': self.gameDict['publicId'],
+                 'answer': 1,
+                 }
+        response = self.client.post(path=url, data=data2, format='json')
+        # print(response.data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)

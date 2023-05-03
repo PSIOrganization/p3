@@ -3,24 +3,23 @@
     <div id="formulario-persona">
       <div class="botones">
         <div class="row2" v-for="answer in answers" :key="answer.value">
-        <form @submit.prevent="enviarFormulario(answer.value)">
-          <button :class="answer.class"></button>
-        </form>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div v-if="error" class="alert alert-danger" role="alert">
-              {{ error_message }}
-            </div>
-            <div v-if="info">
-              {{ info_message }}
+          <form @submit.prevent="enviarFormulario(answer.value)">
+            <button :class="answer.class"></button>
+          </form>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div v-if="error" class="alert alert-danger" role="alert">
+                {{ error_message }}
+              </div>
+              <div v-if="info">
+                {{ info_message }}
+              </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
-      
     </div>
   </div>
 </template>

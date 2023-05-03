@@ -1,18 +1,19 @@
 <template>
   <div class="answersview">
     <div id="answersForm">
-    <h1>{{ answerMessage }}</h1>
-    <answersForm
-      :error="error"
-      :error_message="error_message"
-      :info="info"
-      :info_message="info_message"
-      @add-guess="addGuess"
-    />
-    <button class= "homebutton" v-if="returnButton" @click="returnToHome">Return to Home</button>
+      <h1>{{ answerMessage }}</h1>
+      <answersForm
+        :error="error"
+        :error_message="error_message"
+        :info="info"
+        :info_message="info_message"
+        @add-guess="addGuess"
+      />
+      <button class="homebutton" v-if="returnButton" @click="returnToHome">
+        Return to Home
+      </button>
+    </div>
   </div>
-  </div>
-  
 </template>
 
 <script>
@@ -66,12 +67,18 @@ export default {
       const game = await response.json();
       if (response.status == 200) {
         // console.log(game);
+        if (game.state != this.gameState) {
+          // console.log("state changed");
+          this.resetState();
+        }
         this.gameState = game.state;
         if (this.gameState == 3) {
           this.answerMessage = `Question ${game.questionNo + 1}`;
         } else if (this.gameState == 4) {
+          // this.resetState();
           this.answerMessage = `Waiting for next question...`;
         } else if (this.gameState == 5) {
+          // this.resetState();
           this.answerMessage = `That's the end!`;
           this.returnButton = true;
         }
@@ -101,7 +108,7 @@ export default {
         // console.log(response_json.answer)
         this.info_message = `Your answer has been selected!`;
         // console.log(this.info_message)
-      } else if (response.status == 403) {
+      } else if (response.status == 403 || response.status == 400) {
         this.info = false;
         this.error = true;
         this.error_message = response_json;
@@ -113,6 +120,12 @@ export default {
     },
     returnToHome() {
       this.$router.push({ name: "joinGame" });
+    },
+    resetState() {
+      this.error = false;
+      this.error_message = "";
+      this.info = false;
+      this.info_message = "";
     },
   },
 };
