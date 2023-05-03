@@ -12,28 +12,29 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  function updateParticipants() {
-      $.ajax({
-          url: "{% url 'game-updateparticipant' %}",
-          success: function(response) {
-              $("#participants").html(response);
-          },
-          error: function(xhr, status, error) {
-              console.log(xhr.responseText);
-          }
-      });
-  }
-  
-  setInterval(updateParticipants, 2000);
-  </script>
-  <div class="startgame">
+    function updateParticipants() {
+        $.ajax({
+            url: "{% url 'game-updateparticipant' %}",
+            success: function(response) {
+                $("#participants").html(response);
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+    setInterval(updateParticipants, 2000);
+    </script>
+<div class="startgame">
     <h1>Game</h1>
     <p>Waiting lobby for questionnaire: {{ game.questionnaire.title }}</p>
     <p>To join: {{ game.publicId }}</p>
-    <div id="participants">
-        
+    <div id="participants" class="participants">
     </div>
-      <a href="{% url 'game-count-down' %}">Start Game</a>
+        <div class="startgamebutton">
+            <a href="{% url 'game-count-down' %}">Start Game</a>
+        </div>
+      
   </div>
  
   

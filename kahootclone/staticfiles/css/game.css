@@ -26,7 +26,7 @@
   margin: 0;
 }
 
-.card-1 {
+.card-1{
     background-color: #196e0d;
     display: inline-block;
     border: 1px solid #ccc;
@@ -35,7 +35,7 @@
     height: auto;
 }
 
-.card-2 {
+.card-2{
     background-color: #ac0505;
     display: inline-block;
     border: 1px solid #ccc;
@@ -78,4 +78,16 @@
 .countdown p{
   font-size: 1.5em;
   color:  rgba(3, 21, 58, 0.987);
+}
+
+.participants{
+  font-size: 1.5em;
+  color:rgba(255, 255, 255, 0.987);
+  background-color: rgba(3, 21, 58, 0.987);
+}
+
+.startgamebutton{
+  font-size: 1.5em;
+  background-color: rgba(255, 255, 255, 0.987);
+  padding: 5%;
 }

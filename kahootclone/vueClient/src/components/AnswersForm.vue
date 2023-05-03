@@ -1,7 +1,8 @@
 <template>
   <div class="answersform">
     <div id="formulario-persona">
-      <div class="row2" v-for="answer in answers" :key="answer.value">
+      <div class="botones">
+        <div class="row2" v-for="answer in answers" :key="answer.value">
         <form @submit.prevent="enviarFormulario(answer.value)">
           <button :class="answer.class"></button>
         </form>
@@ -18,6 +19,8 @@
           </div>
         </div>
       </div>
+      </div>
+      
     </div>
   </div>
 </template>

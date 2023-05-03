@@ -1,4 +1,5 @@
 <template>
+<div class="homeview">
   <main>
     <div id="gameForm">
       <gameForm
@@ -8,6 +9,8 @@
       />
     </div>
   </main>
+</div>
+ 
 </template>
 
 <script>
@@ -62,3 +65,7 @@ export default {
   },
 };
 </script>
+
+<style scoped src="../assets/homeview.css">
+/*@import '../assets/homeview.css' */
+</style>

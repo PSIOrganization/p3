@@ -1,7 +1,8 @@
 .lobby{
     background: #009087;
-    width: 100vw;
+    width: 100.25vw;
     height: 100vh;
+    margin-left: -10em;
     padding: 15%;
     color: white;
     font-size: 2em;

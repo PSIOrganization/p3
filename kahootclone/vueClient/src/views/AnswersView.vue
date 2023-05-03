@@ -1,5 +1,6 @@
 <template>
-  <div id="answersForm">
+  <div class="answersview">
+    <div id="answersForm">
     <h1>{{ answerMessage }}</h1>
     <answersForm
       :error="error"
@@ -8,8 +9,10 @@
       :info_message="info_message"
       @add-guess="addGuess"
     />
-    <button v-if="returnButton" @click="returnToHome">Return to Home</button>
+    <button class= "homebutton" v-if="returnButton" @click="returnToHome">Return to Home</button>
   </div>
+  </div>
+  
 </template>
 
 <script>
@@ -115,11 +118,6 @@ export default {
 };
 </script>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    align-items: center;
-  }
-}
+<style scoped src="../assets/answersview.css">
+/*@import '../assets/answersview.css' */
 </style>

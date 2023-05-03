@@ -1,73 +1,51 @@
 .answersform{
     background: #009087;
-    width: 100vw;
-    height: 100vh;
-    padding: 15%;
+    padding:15%;
     color: rgba(3, 21, 58, 0.987);
     font-size: 2em;
 }
 
 
-.ansbut{
-    color:rgba(0, 0, 0, 0.987);
-    text-decoration: none;
-    width: 30%;
-    font-size: 2em;
-    margin: 0;
+.botones{
+    margin-left: 10em;
+    display: flex;
+    flex-wrap: wrap;
   }
   
 .answer1{
     color:rgba(0, 0, 0, 0.987);
-    text-decoration: none;
-    width: 30%;
-    font-size: 2em;
-    margin: 0;
     background-color: #196e0d;
-    display: inline-block;
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: auto;
-    height: auto;
+    border: 3px solid #ccc;
+    width: 5em;
+    height: 5em;
 }
 
 .answer2{
     color:rgba(0, 0, 0, 0.987);
-    text-decoration: none;
-    width: 30%;
-    font-size: 2em;
     margin: 0;
     background-color: #ac0505;
-    display: inline-block;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     padding: 10px;
-    width: auto;
-    height: auto;
+    width: 5em;
+    height: 5em;
 }
 
 .answer3{
     color:rgba(0, 0, 0, 0.987);
-    text-decoration: none;
-    width: 30%;
-    font-size: 2em;
     margin: 0;
     background-color: #6d008f;
-    display: inline-block;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     padding: 10px;
-    width: auto;
-    height: auto;  
+    width: 5em;
+    height: 5em;
 }
 
 .answer4 {
     color:rgba(0, 0, 0, 0.987);
-    text-decoration: none;
-    width: 30%;
-    font-size: 2em;
     margin: 0;
     background-color: #003cff;
-    display: inline-block;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     padding: 10px;
-    width: auto;
-    height: auto;
+    width: 5em;
+    height: 5em;
 }
