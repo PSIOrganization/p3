@@ -3,7 +3,7 @@
     <div id="formulario-persona">
     <div class="row2" v-for="answer in answers" :key="answer.value">
       <form @submit.prevent="enviarFormulario(answer.value)">
-          <button class="ansbut ansbut-{{ forloop.counter }}">{{ answer.text }}</button>
+          <button :class="answer.class">{{ answer.text }}</button>
       </form>
     </div>
     <div class="container">
@@ -32,18 +32,22 @@ export default {
         {
           value: 0,
           text: "1",
+          class: "answer1",
         },
         {
           value: 1,
           text: "2",
+          class: "answer2",
         },
         {
           value: 2,
           text: "3",
+          class: "answer3",
         },
         {
           value: 3,
           text: "4",
+          class: "answer4",
         },
       ],
     };
@@ -84,4 +88,5 @@ export default {
 
 <style scoped src="../assets/answersform.css">
 /*@import '../assets/answersform.css' */
+
 </style>
