@@ -1,21 +1,14 @@
+'''
+File: test_additional.py
+Test additional functionalities of the rest server
+'''
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 from models.models import (Game, Guess, Participant,
                            User, Questionnaire, Question, Answer)
 from rest_framework.reverse import reverse
-import json
 from models.constants import QUESTION, LEADERBOARD
-###################
-# You may modify the following variables
-    # default API names
-    # URL Style           HTTP Method	Action	       alias
-    # {prefix}/           GET	        list	       {basename}-list
-    #                     POST	        create
-    # {prefix}/{lookup}/  GET	        retrieve	   {basename}-detail
-    #                     PUT	        update
-    #                     PATCH	        partial_update
-    #                     DELETE	    destroy
-# rest API service alias
+
 GAME_DETAIL = "game-detail"
 GAME_LIST = "game-list"
 
@@ -42,12 +35,14 @@ PARTICIPANT_LIST_ERROR = "Authentication credentials were not provided."
 
 
 class RestTests(APITestCase):
-    """ tests for the rest framework
-    """
-
+    """Test additional functionalities of the rest server"""
     def setUp(self):
-        # ApiClient acts as a dummy web browser, allowing you to test your views 
-        # and interact with your Django application programmatically.
+        '''
+        Create a user, a questionnaire, a few questions, answers and a game
+        @author: José Manuel López-Serrano Tapia
+        '''
+        # ApiClient acts as a dummy web browser, allowing you to test your
+        # views and interact with your Django application programmatically.
         self.client = APIClient()
         # create user
         self.userDict = {"username": 'a',
@@ -131,13 +126,16 @@ class RestTests(APITestCase):
 
     @classmethod
     def decode(cls, txt):
-        """convert the html return by the client in something that may 
+        """convert the html return by the client in something that may
            by printed on the screen"""
         return txt.decode("utf-8")
 
     # ==== participant ====
     def test_participant_additional(self):
-        "add participant"
+        """
+        Additional functionality for participant API
+        @author: Elena Balseiro García
+        """
         url = reverse(PARTICIPANT_LIST)
         data = {'game': 666,  # does not exist
                 'alias': "luis"}
@@ -146,8 +144,10 @@ class RestTests(APITestCase):
 
     # ==== GUESS ===
     def test_guess_additional(self):
-        " add a guess additional functionality"
-        # print("this")
+        """
+        Additional functionality for guess API
+        @author: José Manuel López-Serrano Tapia
+        """
         url = reverse(GUESS_LIST)
         self.game.questionNo = self.game.questionNo + 1
         self.game.state = QUESTION

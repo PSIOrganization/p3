@@ -1,4 +1,8 @@
-from django.shortcuts import render
+'''
+File: views.py
+Defines the API endpoints for the rest server
+'''
+
 from rest_framework import viewsets
 
 from models.models import Participant, Game, Guess, Question, Answer
@@ -6,17 +10,16 @@ from .serializers import ParticipantSerializer
 from .serializers import GameSerializer
 from .serializers import GuessSerializer
 
-from rest_framework.renderers import JSONRenderer
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework import mixins
 
-from models.constants import QUESTION, ANSWER, LEADERBOARD
+from models.constants import QUESTION, LEADERBOARD
 
 
 class ParticipantViewSet(viewsets.ModelViewSet):
     '''
-    API endpoint that allows users to be created.
+    API endpoint that allows participants to be created.
+    Any other functionality is not allowed.
     '''
     queryset = Participant.objects.all()
     serializer_class = ParticipantSerializer
@@ -24,8 +27,9 @@ class ParticipantViewSet(viewsets.ModelViewSet):
     def create(self, request):
         '''
         Creates a new participant
-        @return: render if the form is not valid
-        @return: redirect to home page if the form is valid
+        @return: response error if the form is not valid
+        @return: ok response with participant created if the form is valid
+        @author: Elena Balseiro García
         '''
         data = request.data
         game_exists = Game.objects.filter(publicId=data['game']).exists()
@@ -45,22 +49,31 @@ class ParticipantViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk):
-        # should not update a participant, returns error message:
-        # "Authentication credentials were not provided."
+        '''
+        Returns 403 error message
+        @return: error response
+        @author: José Manuel López-Serrano Tapia
+        '''
         error_message = "Authentication credentials were not provided."
         return Response(status=status.HTTP_403_FORBIDDEN,
                         data=error_message)
 
     def retrieve(self, request, pk):
-        # should not list participants, returns error message:
-        # "Authentication credentials were not provided."
+        '''
+        Returns 403 error message
+        @return: error response
+        @author: Elena Balseiro García
+        '''
         error_message = "Authentication credentials were not provided."
         return Response(status=status.HTTP_403_FORBIDDEN,
                         data=error_message)
 
     def destroy(self, request, pk):
-        # should not delete a participant, returns error message:
-        # "Authentication credentials were not provided."
+        '''
+        Returns 403 error message
+        @return: error response
+        @author: José Manuel López-Serrano Tapia
+        '''
         error_message = "Authentication credentials were not provided."
         return Response(status=status.HTTP_403_FORBIDDEN,
                         data=error_message)
@@ -68,42 +81,39 @@ class ParticipantViewSet(viewsets.ModelViewSet):
 
 class GameViewSet(viewsets.ModelViewSet):
     '''
-    API endpoint that allows users to be retrieved.
+    API endpoint that allows a game to be retrieved.
+    Any other functionality is not allowed.
     '''
     queryset = Game.objects.all()
     serializer_class = GameSerializer
     lookup_field = 'publicId'
 
-    # def retrieve(self, request, publicId):
-    #     '''
-    #     Retrieves a game
-    #     @return: render if the form is not valid
-    #     @return: redirect to home page if the form is valid
-    #     '''
-    #     game_exists = Game.objects.filter(publicId=publicId).exists()
-    #     if not game_exists:
-    #         return Response(status=status.HTTP_403_FORBIDDEN)
-    #     game = Game.objects.get(publicId=publicId)
-    #     serializer = GameSerializer(game)
-    #     return Response(serializer.data, status=status.HTTP_200_OK)
-
     def update(self, request, publicId):
-        # should not update a participant, returns error message:
-        # "Authentication credentials were not provided."
+        '''
+        Returns 403 error message
+        @return: error response
+        @author: Elena Balseiro García
+        '''
         error_message = "Authentication credentials were not provided."
         return Response(status=status.HTTP_403_FORBIDDEN,
                         data=error_message)
 
     def create(self, request):
-        # should not list participants, returns error message:
-        # "Authentication credentials were not provided."
+        '''
+        Returns 403 error message
+        @return: error response
+        @author: José Manuel López-Serrano Tapia
+        '''
         error_message = "Authentication credentials were not provided."
         return Response(status=status.HTTP_403_FORBIDDEN,
                         data=error_message)
 
     def destroy(self, request, publicId):
-        # should not delete a participant, returns error message:
-        # "Authentication credentials were not provided."
+        '''
+        Returns 403 error message
+        @return: error response
+        @author: Elena Balseiro García
+        '''
         error_message = "Authentication credentials were not provided."
         return Response(status=status.HTTP_403_FORBIDDEN,
                         data=error_message)
@@ -111,7 +121,8 @@ class GameViewSet(viewsets.ModelViewSet):
 
 class GuessViewSet(viewsets.ModelViewSet):
     '''
-    API endpoint that allows users to be created.
+    API endpoint that allows guesses to be created.
+    Any other functionality is not allowed.
     '''
     queryset = Guess.objects.all()
     serializer_class = GuessSerializer
@@ -119,8 +130,9 @@ class GuessViewSet(viewsets.ModelViewSet):
     def create(self, request):
         '''
         Creates a new guess
-        @return: render if the form is not valid
-        @return: redirect to home page if the form is valid
+        @return: response error if the form is not valid
+        @return: ok response with guess created
+        @author: José Manuel López-Serrano Tapia
         '''
         data = request.data
         print(data)
@@ -171,22 +183,31 @@ class GuessViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk):
-        # should not update a participant, returns error message:
-        # "Authentication credentials were not provided."
+        '''
+        Returns 403 error message
+        @return: error response
+        @author: Elena Balseiro García
+        '''
         error_message = "Authentication credentials were not provided."
         return Response(status=status.HTTP_403_FORBIDDEN,
                         data=error_message)
 
     def retrieve(self, request, pk):
-        # should not list participants, returns error message:
-        # "Authentication credentials were not provided."
+        '''
+        Returns 403 error message
+        @return: error response
+        @author: José Manuel López-Serrano Tapia
+        '''
         error_message = "Authentication credentials were not provided."
         return Response(status=status.HTTP_403_FORBIDDEN,
                         data=error_message)
 
     def destroy(self, request, pk):
-        # should not delete a participant, returns error message:
-        # "Authentication credentials were not provided."
+        '''
+        Returns 403 error message
+        @return: error response
+        @author: Elena Balseiro García
+        '''
         error_message = "Authentication credentials were not provided."
         return Response(status=status.HTTP_403_FORBIDDEN,
                         data=error_message)

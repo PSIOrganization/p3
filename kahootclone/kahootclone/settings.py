@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'restServer.apps.RestserverConfig',
     'rest_framework',
     'corsheaders',
-    
 ]
 
 MIDDLEWARE = [
@@ -181,7 +180,7 @@ DATABASES['default'].update(db_from_env)
 # Update the default database with the new settings
 
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = [  
+CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'https://p4-vueclient-elena-manu.onrender.com',
 ]

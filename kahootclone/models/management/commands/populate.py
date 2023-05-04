@@ -63,7 +63,7 @@ class Command(BaseCommand):
     # handle function will be executed by 'manage populate'
     def handle(self, *args, **kwargs):
         """
-        This function will be executed by 
+        This function will be executed by
         """
 
         self.cleanDataBase()   # clean database

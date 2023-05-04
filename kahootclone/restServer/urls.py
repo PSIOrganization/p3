@@ -1,3 +1,8 @@
+'''
+File: urls.py
+Contains the router for the rest server, as well as the endpoints
+'''
+
 from django.urls import path, include
 from . import views
 from rest_framework import routers

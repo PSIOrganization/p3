@@ -12,7 +12,6 @@ from django.views.generic import View, ListView, DetailView
 from django.template import loader
 from models.models import Questionnaire, Question, Answer, Game, Participant
 from models.constants import WAITING, COUNTDOWN, QUESTION, ANSWER, LEADERBOARD
-import faker
 
 
 class HomePage(View):
@@ -395,7 +394,7 @@ class GameCountdown(View):
             current_question = question_list[current_game.questionNo]
             correct_answer = Answer.objects.get(question=current_question,
                                                 correct=True)
-            
+
             participant_list = Participant.objects.filter(game=current_game)
             first_place = None
             second_place = None

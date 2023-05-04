@@ -3,7 +3,7 @@ File: urls.py
 Contains all the urls relevant to the kahootclone project
 '''
 
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 urlpatterns = [
