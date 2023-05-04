@@ -26,7 +26,7 @@ load_dotenv()
 if 'TESTING' in os.environ:
     SECRET_KEY = os.getenv('SECRET_KEY_PROD')
     DEBUG = 'DEBUG' in os.environ  # Only set to True if DEBUG is set
-    ALLOWED_HOSTS = ['127.0.0.1', 'https://p3-kahoot-elena-manu.onrender.com']
+    ALLOWED_HOSTS = ['127.0.0.1', 'https://p4-kahoot-elena-manu.onrender.com']
     # first host is for local testing, second is for Render deployment
 else:
     # Only relevant in render deployment

@@ -4,28 +4,28 @@ CHECK TESTS HAVE NOT BEEN CHANGED • Make sure your code implements all the req
 all the provided tests. It is not acceptable to modify the code of the tests
 except the variables located at the beginning of the file, which are clearly
 identified.
-• Implement all the tests you consider necessary to reach full coverage of the
+YES • Implement all the tests you consider necessary to reach full coverage of the
 developed functionality. These tests must be implemented in a file called
 tests additional.py.
-• Include in the root of the project a file called coverage.txt which contains
+YES • Include in the root of the project a file called coverage.txt which contains
 the result of running the command coverage for all the tests.
-• Include in the root of the project a file called user guide.pdf containing
+ADD • Include in the root of the project a file called user guide.pdf containing
 the user manual.
-• Deploy and test the application in render.com in production mode.
-• This assignment requires to present 2 projects: one in Django that manages the administrative part and which contains the REST API, and one in
+YES • Deploy and test the application in render.com in production mode.
+ASK • This assignment requires to present 2 projects: one in Django that manages the administrative part and which contains the REST API, and one in
 Vue.js where the participants connect to. Upload to Moodle two files, obtained from running the command zip -r ../xxxxx.zip .git from the
 root of the Django and Vue.js projects respectively. Change xxxxx to Django or Vue.js depending on the project. Recall you must add and “commit” 
 the files to git before running that command. If you want to check the content of the zip file is correct, you may do it by running the command: 
 cd..; unzip assign5 final.zip; git clone . tmpDir; ls tmpDir.
-• Make sure the variable ALLOWED HOSTS from file settings.py included
+I THINK • Make sure the variable ALLOWED HOSTS from file settings.py included
 in the submission contains the deployment path in render.com. Similarly, it is expected the variables Cross-Origin Resource Sharing
 (CORS ORIGIN WHITELIST) are properly initialized to be able to run the application in render.com. Finally, check in render.com that both the user
 name and password for admin are alumnodb. If any of the two needed URLs to execute the assignment in render.com are not available as indicated in 
 this point or the admin user password is not the proposed one, the assignment will be evaluated as if it was not deployed in render.com.
-• Check that, when writing files in Python, code presents a consistent style
+YES • Check that, when writing files in Python, code presents a consistent style
 and according to the style criteria highlighted by Flake8. Flake8 must not
 return any error when executed on the code programmed by the student.
-• Similarly, the files created with Vue.js must satisfy the criteria highlighted
+ASK • Similarly, the files created with Vue.js must satisfy the criteria highlighted
 by lint (command npm lint)
 
 Evaluation criteria
