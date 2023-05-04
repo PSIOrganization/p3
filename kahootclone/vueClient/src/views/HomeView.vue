@@ -59,6 +59,7 @@ export default {
       } else {
         console.log("Error");
         this.error = true;
+        this.error_message = "Something went wrong in the server!";
       }
     },
   },
