@@ -69,7 +69,7 @@ YES    • The web application has a user interface that is user friendly and vi
     provided in render.com.
 If the following criteria are accomplished, a grade up to 8.9 might be achieved:
     • All the previous criteria are accomplished completely.
-ALMOST    • The code is readable, efficient, well-structured, and commented.
+YES    • The code is readable, efficient, well-structured, and commented.
 YES    • The tools provided by the framework are used.
     • The following are examples of the previous points:
 YES        – The queries are done by the database. That is, the methods in views.py
@@ -80,14 +80,14 @@ YES     – The errors are properly processed and understandable message errors 
         returned.
 YES        – The web application properly manages accesses to non existing pages or
         with inadequate permissions.
-NO        – The code presents a consistent style and the functions are commented
+YES        – The code presents a consistent style and the functions are commented
         including their author. Note: the author of a function must be unique.
-NO        – The style criteria highlighted by Flake8 are applied in a coherent way.
+YES        – The style criteria highlighted by Flake8 are applied in a coherent way.
         Flake8 does not return any error when executed on the code programmed
         by the student.
 YES        – The files created with Vue.js must satisfy the criteria highlighted by lint
         (command npm lint).
-NO    • The user manual is included and appropriate.
+YES    • The user manual is included and appropriate.
 YES    • When running the tests, the number of fails is not larger than two and the
     code that satisfies them is functional.
 YES    • If we reduce the size of the browser window or use the zoom, all the elements
