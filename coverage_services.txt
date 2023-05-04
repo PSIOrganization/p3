@@ -1,11 +1,10 @@
-Name                              Stmts   Miss  Cover   Missing
----------------------------------------------------------------
-services/__init__.py                  0      0   100%
-services/admin.py                     0      0   100%
-services/apps.py                      4      0   100%
-services/migrations/__init__.py       0      0   100%
-services/models.py                    0      0   100%
-services/urls.py                      6      0   100%
-services/views.py                   183      0   100%
----------------------------------------------------------------
-TOTAL                               193      0   100%
+Name                   Stmts   Miss  Cover   Missing
+----------------------------------------------------
+services/__init__.py       0      0   100%
+services/admin.py          0      0   100%
+services/apps.py           4      0   100%
+services/models.py         0      0   100%
+services/urls.py           6      0   100%
+services/views.py        203      0   100%
+----------------------------------------------------
+TOTAL                    213      0   100%

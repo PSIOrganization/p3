@@ -13,7 +13,7 @@ restServer/apps.py              4      0   100%
 restServer/models.py            1      0   100%
 restServer/serializers.py      14      0   100%
 restServer/urls.py              8      0   100%
-restServer/views.py            86      0   100%
+restServer/views.py            89      0   100%
 services/__init__.py            0      0   100%
 services/admin.py               0      0   100%
 services/apps.py                4      0   100%
@@ -21,4 +21,4 @@ services/models.py              0      0   100%
 services/urls.py                6      0   100%
 services/views.py             203      0   100%
 ---------------------------------------------------------
-TOTAL                         463      0   100%
+TOTAL                         466      0   100%

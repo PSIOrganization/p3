@@ -9,7 +9,7 @@ const app = createApp(App);
 
 const store = createStore({
   state: {
-    uuidp: '',
+    uuidp: "",
   },
   mutations: {
     store_participant(state, payload) {

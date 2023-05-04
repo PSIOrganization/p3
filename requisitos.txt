@@ -1,6 +1,6 @@
 Work to present at the end of the assignment
 
-• Make sure your code implements all the required functionality and satisfies
+CHECK TESTS HAVE NOT BEEN CHANGED • Make sure your code implements all the required functionality and satisfies
 all the provided tests. It is not acceptable to modify the code of the tests
 except the variables located at the beginning of the file, which are clearly
 identified.
@@ -58,13 +58,13 @@ YES    • Using the admin application it is possible to create, list, or remove
     belonging to all the required models.
 If the following criteria are accomplished, a grade up to 7.9 might be achieved:
     • All the previous criteria are accomplished completely.
-IDK    • Heritage has been used in Django when creating the web pages.
+YES    • Heritage has been used in Django when creating the web pages.
 YES    • Every form that is either related with a model, or requested explicitly in the
     assignment, has been built using the form system implemented by Django.
 YES    • CSS files or environments such as bootstrap have been used to define the styles.
 YES    • When running the tests, the number of fails is not larger than four and the
     code that satisfies them is functional.
-CHECK    • The web application has a user interface that is user friendly and visually
+YES    • The web application has a user interface that is user friendly and visually
     neat. Visually the web application must NOT be similar to the model we have
     provided in render.com.
 If the following criteria are accomplished, a grade up to 8.9 might be achieved:
@@ -76,21 +76,21 @@ YES        – The queries are done by the database. That is, the methods in vie
         do not retrieve all elements of a table (i.e. ClassName.objects.all())
         and the search is done by the functions defined en views.py (for object
         in class: if object.name==’Pedro’: ...).
-I THINK SO        – The errors are properly processed and understandable message errors are
+YES     – The errors are properly processed and understandable message errors are
         returned.
-        – The web application properly manages accesses to non existing pages or
+YES        – The web application properly manages accesses to non existing pages or
         with inadequate permissions.
 NO        – The code presents a consistent style and the functions are commented
         including their author. Note: the author of a function must be unique.
 NO        – The style criteria highlighted by Flake8 are applied in a coherent way.
         Flake8 does not return any error when executed on the code programmed
         by the student.
-I THINK        – The files created with Vue.js must satisfy the criteria highlighted by lint
+YES        – The files created with Vue.js must satisfy the criteria highlighted by lint
         (command npm lint).
 NO    • The user manual is included and appropriate.
 YES    • When running the tests, the number of fails is not larger than two and the
     code that satisfies them is functional.
-NO    • If we reduce the size of the browser window or use the zoom, all the elements
+YES    • If we reduce the size of the browser window or use the zoom, all the elements
     in the page are still accessible and no functionality is lost.
 If the following criteria are accomplished, a grade up to 10 might be achieved
     • All the previous criteria are accomplished completely.

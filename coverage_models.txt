@@ -3,9 +3,9 @@ Name                  Stmts   Miss  Cover   Missing
 models/__init__.py        0      0   100%
 models/admin.py          10      0   100%
 models/apps.py            4      0   100%
-models/constants.py       4      0   100%
-models/models.py         89      0   100%
+models/constants.py       5      0   100%
+models/models.py         92      0   100%
 models/urls.py            3      0   100%
 models/views.py          22      0   100%
 ---------------------------------------------------
-TOTAL                   132      0   100%
+TOTAL                   136      0   100%
