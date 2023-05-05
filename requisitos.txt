@@ -1,6 +1,6 @@
 Work to present at the end of the assignment
 
-CHECK TESTS HAVE NOT BEEN CHANGED • Make sure your code implements all the required functionality and satisfies
+YES • Make sure your code implements all the required functionality and satisfies
 all the provided tests. It is not acceptable to modify the code of the tests
 except the variables located at the beginning of the file, which are clearly
 identified.
@@ -9,7 +9,7 @@ developed functionality. These tests must be implemented in a file called
 tests additional.py.
 YES • Include in the root of the project a file called coverage.txt which contains
 the result of running the command coverage for all the tests.
-ADD • Include in the root of the project a file called user guide.pdf containing
+YES • Include in the root of the project a file called user guide.pdf containing
 the user manual.
 YES • Deploy and test the application in render.com in production mode.
 ASK • This assignment requires to present 2 projects: one in Django that manages the administrative part and which contains the REST API, and one in
@@ -25,8 +25,8 @@ this point or the admin user password is not the proposed one, the assignment wi
 YES • Check that, when writing files in Python, code presents a consistent style
 and according to the style criteria highlighted by Flake8. Flake8 must not
 return any error when executed on the code programmed by the student.
-ASK • Similarly, the files created with Vue.js must satisfy the criteria highlighted
-by lint (command npm lint)
+YES • Similarly, the files created with Vue.js must satisfy the criteria highlighted
+by lint (command npm run lint)
 
 Evaluation criteria
 
